@@ -1,6 +1,163 @@
 /*
-============
-Variables
-============
-*/
+=======================
+Fonts
+=======================
+ */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap');
 
+/*
+=======================
+Variables
+=======================
+*/
+:root {
+    /* Primary color */
+    --clr-primary: #F0C06C;
+
+    /* Primary color gradient */
+    --clr-primary-gradient-1: #694E1E;
+    --clr-primary-gradient-2: #F0C16A;
+    --clr-primary-gradient-3: #ECC377;
+    --clr-primary-gradient-4: #856327;
+
+    /* Gradient */
+    --clr-primary-gradient: -webkit-linear-gradient(
+            top right,
+            var(--clr-primary-gradient-1),
+            var(--clr-primary-gradient-2),
+            var(--clr-primary-gradient-3),
+            var(--clr-primary-gradient-4)
+    );
+
+    /* Dark shades of primary color */
+    --clr-primary-1: #776647;
+    --clr-primary-2: #3C301B;
+    --clr-primary-3: #1B150C;
+    --clr-primary-4: #191209;
+    --clr-primary-5: #150F06;
+    --clr-primary-6: #2F261A;
+    --clr-primary-7: #080501;
+    --clr-primary-8: #150F06;
+
+    /* Light shades of primary color */
+    --clr-primary-9: #F7E2BE;
+    --clr-primary-10: #7c7975;
+
+    /* Global constraints */
+    --radius: 0.25rem;
+    --transition: all 0.3s linear;
+}
+
+/*
+=======================
+Global Styles
+=======================
+ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--clr-primary-8);
+    color: var(--clr-primary-9);
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+    text-transform: capitalize;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 0.875rem; }
+
+p {
+    margin-bottom: 1.25rem;
+    color: var(--clr-primary-10);
+}
+
+@media screen and (min-width: 800px) {
+    h1 { font-size: 4rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 1.75rem; }
+    h4 { font-size: 1rem; }
+    body { font-size: 1rem; }
+
+    h1, h2, h3, h4 {
+        line-height: 1;
+    }
+}
+
+/*
+=======================
+Nav bar
+=======================
+*/
+.nav-wrapper {
+    padding: 1rem;
+    background-color: var(--clr-primary-7);
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-wrapper ul {
+    display: flex;
+    /*background-color: var(--clr-primary-4);*/
+}
+
+.nav-wrapper ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+}
+
+.nav-wrapper a {
+    background: var(--clr-primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-wrapper .logo-wrapper img {
+    height: 2.5rem;
+}
+
+.nav-wrapper .logo-wrapper {
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+=======================
+Buttons
+=======================
+ */
+
+.btn-primary {
+    background-image: var(--clr-primary-gradient);
+    padding: 2rem .9rem;
+}
+
+.btn-primary span {
+    color: var(--clr-primary-3);
+}
+
+/*.nav-wrapper .btn-primary a {*/
+/*    color: black;*/
+/*}*/
