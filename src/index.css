@@ -91,6 +91,8 @@ h4 { font-size: 0.875rem; }
 p {
     margin-bottom: 1.25rem;
     color: var(--clr-primary-10);
+    font-size: 1.3rem;
+    line-height: 1.9rem;
 }
 
 @media screen and (min-width: 800px) {
@@ -148,14 +150,13 @@ Nav bar
 */
 .nav-wrapper {
     padding: 1rem;
-    background-color: var(--clr-primary-7);
+    background-color: var(--clr-primary-8);
     display: flex;
     justify-content: space-between;
 }
 
 .nav-wrapper ul {
     display: flex;
-    /*background-color: var(--clr-primary-4);*/
 }
 
 .nav-wrapper ul li {
@@ -323,7 +324,43 @@ Carousel
     color: var(--clr-primary);
 }
 
+/*
+=======================
+Mission & vision
+=======================
+ */
+.mission-vision-section {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
 
+.mission-vision-left-section {
+    padding: 100px;
+    width: 70%;
+}
+
+.mission-content-container {
+    max-width: 700px;
+}
+
+.mission-vision-right-section {
+    width: 30%;
+}
+
+.mission-vision-container {
+    margin-top: 100px;
+}
+
+.mission-vision-right-section img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.mission-content-container {
+    margin-top: 100px;
+}
 
 /*
 =======================

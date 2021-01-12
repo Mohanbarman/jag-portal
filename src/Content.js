@@ -5,10 +5,10 @@ import CoreLeader3 from './assets/core-leaders/3.jpg';
 import CoreLeader4 from './assets/core-leaders/4.jpg';
 import CoreLeader5 from './assets/core-leaders/5.jpg';
 import CoreLeader6 from './assets/core-leaders/6.jpg';
-
 // Carousel images
 import CarouselImageFirst from './assets/carousel/first.jpg'
-
+// Mission & Vision
+import VisionAndMissionImage from './assets/mission-and-vision.jpg';
 
 
 const carouselContent = [
@@ -38,7 +38,7 @@ const carouselContent = [
   },
 ];
 
-const coreLeaders = [
+const coreLeadersContent = [
   {
     id: 1,
     label: 'Marlon Whitehead',
@@ -71,5 +71,24 @@ const coreLeaders = [
   },
 ]
 
+const missionVisionContent = {
+    type: 'mission-vision-short',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec, ' +
+      'sit euismod orci sapien consectetur donec id id sollicitudin. Blandit ' +
+      'purus ipsum pretium venenatis orci, sit aliquet ac. Tincidunt commodo,' +
+      ' a enim eu aenean elit enim. Egestas in tortor elementum dictum. Mus ' +
+      'ut placerat ut gravida amet auctor ultricies. A vitae nulla enim mauris,' +
+      ' non. Turpis varius eget scelerisque at arcu enim sollicitudin pellentesque' +
+      ' id. Sit enim malesuada pretium tempor. Viverra faucibus gravida at magna' +
+      '. Netus nunc venenatis diam et ultricies. Venenatis lectus lorem aliquam ' +
+      'faucibus sed at.\n Iaculis at quis suspendisse ac maecenas facilisi ' +
+      'tincidunt ut. Arcu in senectus amet feugiat varius.',
+    image: VisionAndMissionImage,
+}
 
-export { carouselContent, coreLeaders };
+
+export {
+  carouselContent,
+  coreLeadersContent,
+  missionVisionContent,
+};
