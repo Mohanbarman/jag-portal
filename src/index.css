@@ -44,6 +44,9 @@ Variables
     --clr-primary-9: #F7E2BE;
     --clr-primary-10: #7c7975;
 
+    --clr-inactive: #8B898A;
+    --clr-active: #E7E7E7;
+
     /* Global constraints */
     --radius: 0.25rem;
     --transition: all 0.3s linear;
@@ -102,6 +105,42 @@ p {
     }
 }
 
+.section {
+    padding: 100px;
+    position: relative;
+}
+
+.section:nth-child(even) {
+    background-color: var(--clr-primary-3);
+}
+
+.decorated-title-1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(255, 255, 255, .44);
+    color: var(--clr-primary-6);
+    position: relative;
+    display: inline-block;
+}
+
+.decorated-title-1::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 80%;
+    background-color: rgba(255, 255, 255, .44);
+    left: 0;
+    bottom: -20px;
+}
+
+.section-watermark-logo {
+    position: absolute;
+    top: 2px;
+    right: 1rem;
+    z-index: -1;
+}
+
 /*
 =======================
 Nav bar
@@ -158,6 +197,149 @@ Buttons
     color: var(--clr-primary-3);
 }
 
-/*.nav-wrapper .btn-primary a {*/
-/*    color: black;*/
-/*}*/
+/*
+=======================
+Carousel
+=======================
+ */
+
+.carousel-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel-nav-btn {
+    background-color: var(--clr-primary-7);
+    border: none;
+    border-radius: 50%;
+    opacity: .9;
+}
+
+.carousel-next-btn {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+}
+
+.carousel-prev-btn {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%)
+}
+
+.carousel-indicator-container {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    gap: .5rem;
+    display: flex;
+}
+
+.carousel-indicator {
+    height: 50px;
+    width: 50px;
+    border: none;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.carousel-indicator-count {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    position: relative;
+    color: var(--clr-inactive);
+}
+
+.carousel-indicator-count::after {
+    content: '';
+    height: 5px;
+    width: 40px;
+    position: absolute;
+    background-color: var(--clr-inactive);
+    display: block;
+    left: 0;
+    bottom: -10px;
+}
+
+.carousel-indicator-count-active {
+    color: var(--clr-active);
+}
+
+.carousel-indicator-count-active::after {
+    background-color: var(--clr-active);
+}
+
+.carousel .carousel__slider {
+    max-height: 90vh;
+}
+
+
+/*
+=======================
+Carousel
+=======================
+ */
+
+.core-leaders-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-top: 100px;
+    gap: 50px;
+}
+
+.core-leader-image-container {
+    padding: 3px;
+    background-image: var(--clr-primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.core-leader-image {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.core-leader-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.core-leader-label {
+    margin: 1.5rem 0;
+    font-weight: 500;
+    color: var(--clr-primary);
+}
+
+
+
+/*
+=======================
+Media queries
+=======================
+ */
+
+@media (max-width: 650px) {
+    .section {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .decorated-title-1 {
+        text-align: center;
+    }
+    .section-watermark-logo {
+        display: none;
+    }
+}

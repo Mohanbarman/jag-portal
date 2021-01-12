@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import CarouselImage from '../assets/carousel/first.jpg';
 import { useState } from 'react';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
@@ -15,6 +14,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { makeStyles } from '@material-ui/core';
 import Colors from '../Colors';
+import { carouselContent } from "../Content";
 
 
 // Button nav button styles
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 const Carousel = () => {
   const classes = useStyles();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-  const [currentSlide, setCuttentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -39,76 +39,63 @@ const Carousel = () => {
 
   return(
     <CarouselProvider
-      naturalSlideHeight={screenWidth < 480 ? 60 : 40}
+      naturalSlideHeight={60}
       naturalSlideWidth={100}
       interval={1000}
-      infinite={true}
       dragStep={1}
-      totalSlides={3}>
+      totalSlides={carouselContent.length}>
       <Slider>
-        <Slide index={0}>
-          <img className="carousel-image" src={CarouselImage} alt=""/>
-        </Slide>
-        <Slide index={1}>
-          <img className="carousel-image" src={CarouselImage} alt=""/>
-        </Slide>
-        <Slide index={2}>
-          <img className="carousel-image" src={CarouselImage} alt=""/>
-        </Slide>
+        {/*Carousel Images*/}
+        {carouselContent.map((carousel, index) => (
+          <Slide index={index}>
+            <img className="carousel-image" src={carousel.image} alt=""/>
+          </Slide>
+        ))}
       </Slider>
 
       {screenWidth > 600 &&
         <>
+          {/*Nav buttons*/}
           <ButtonBack className="carousel-nav-btn carousel-prev-btn">
-            <IconButton classes={classes} color="primary">
+            <IconButton classes={classes} color="primary" onClick={() => {
+              setCurrentSlide(p => {
+                if (p > 0)
+                  return p - 1;
+              });
+            }}>
               <ArrowBackIosIcon/>
             </IconButton>
           </ButtonBack>
           <ButtonNext className="carousel-nav-btn carousel-next-btn">
-            <IconButton  classes={classes} color="primary">
+            <IconButton classes={classes} color="primary" onClick={() => {
+              setCurrentSlide(p => {
+                if (p < carouselContent.length)
+                  return p + 1
+              })
+            }}>
               <ArrowForwardIosIcon/>
             </IconButton>
           </ButtonNext>
+
+          {/*Carousel indicators*/}
+          <div className="carousel-indicator-container">
+            {carouselContent.map((carousel, index) => (
+              <Dot
+                className="carousel-indicator"
+                slide={index}
+                onClick={() => setCurrentSlide(index)}
+                children={
+                  <span
+                    className={"carousel-indicator-count" + (currentSlide === index ? ' carousel-indicator-count-active' : '')}>
+                {carousel.label}
+              </span>
+                }/>
+            ))}
+          </div>
         </>
       }
-
-      <div className="carousel-indicator-container">
-        <Dot
-          className="carousel-indicator"
-          slide={0}
-          onClick={() => setCuttentSlide(0)}
-          children={
-          <span
-            className={"carousel-indicator-count" + (currentSlide === 0 ? ' carousel-indicator-count-active' : '')}>
-            01
-          </span>
-        }/>
-
-        <Dot
-          className="carousel-indicator"
-          slide={1}
-          onClick={() => setCuttentSlide(1)}
-          children={
-            <span
-              className={"carousel-indicator-count" + (currentSlide === 1 ? ' carousel-indicator-count-active' : '')}>
-              02
-            </span>
-          }/>
-
-        <Dot
-          className="carousel-indicator"
-          slide={2}
-          onClick={() => setCuttentSlide(2)}
-          children={
-            <span
-              className={"carousel-indicator-count" + (currentSlide === 2 ? ' carousel-indicator-count-active' : '')}>
-            03
-            </span>
-          }/>
-      </div>
-
     </CarouselProvider>
   );
-}
+};
 
 export default Carousel;
