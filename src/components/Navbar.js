@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Logo from '../assets/logo.svg';
 import { Link, useHistory } from "react-router-dom";
-
+import MenuIcon from "@material-ui/icons/Menu";
+import { Drawer } from '@material-ui/core';
+import { navStyles } from "./NavbarStyles";
 import {
   Button,
   IconButton,
   List,
   Divider,
   ListItem,
-  ListItemIcon,
   ListItemText,
 } from "@material-ui/core";
 
-import MenuIcon from "@material-ui/icons/Menu";
-import MailIcon from '@material-ui/icons/Mail';
-import InboxIcon from '@material-ui/icons/Inbox';
-import { Drawer } from '@material-ui/core';
-
 
 const Navbar = () => {
-  const history = useHistory();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const history = useHistory();
+  const classes = navStyles();
 
   const routes = [
     {
@@ -55,18 +53,11 @@ const Navbar = () => {
   // Desktop nav bar
   const desktopNav = (
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/registration">Registration</Link>
-        </li>
+        {routes.map(i => (
+          <li>
+            <Link to={i.path}>{i.label}</Link>
+          </li>
+        ))}
         <li>
           <Button onClick={() => {
             history.push('/login')
@@ -86,13 +77,11 @@ const Navbar = () => {
         <MenuIcon/>
       </IconButton>
 
-      <Drawer anchor="right" onClose={() => setIsDrawerOpen(false)} open={isDrawerOpen}>
+      <Drawer classes={classes} anchor="right" onClose={() => setIsDrawerOpen(false)} open={isDrawerOpen}>
         <List>
-          {['Contact', 'About', 'Registration', 'Login'].map((text, index) => (
-            <ListItem button key={text} onClick={() => {
-
-            }}>
-              <ListItemText className="text" primary={text} />
+          {routes.map((i, index) => (
+            <ListItem button key={i.label} onClick={() =>  history.push(i.path)}>
+              <ListItemText className="text" primary={i.label} />
             </ListItem>
           ))}
         </List>
