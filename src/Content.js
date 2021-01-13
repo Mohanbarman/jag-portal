@@ -179,7 +179,7 @@ const registrationScreenContent = {
 }
 
 const contactUsScreenContent = {
-  heading: 'Register for new account',
+  heading: 'Contact us',
   subheading: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra ' +
     'tempor, vivamus magnis et ultricies. Senectus quam duis est duis sit vitae, ' +
     'suscipit est morbi. Aliquet morbi quam egestas maecenas aliquet turpis sit ' +

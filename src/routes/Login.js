@@ -4,16 +4,12 @@ import {Button, TextField} from '@material-ui/core';
 import {ArrowForwardIos} from "@material-ui/icons";
 import ActionFormContainer from "../components/ActionFormContainer";
 import {Link} from 'react-router-dom';
+import {validateEmail} from "../Utils";
 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const validateEmail = (email) => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  }
 
   const _handleSubmit = (e) => {
     e?.preventDefault();

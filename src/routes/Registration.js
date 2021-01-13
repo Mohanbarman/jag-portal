@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import ActionFormContainer from "../components/ActionFormContainer";
 import { registrationScreenContent } from "../Content";
-import {Button, TextField} from "@material-ui/core";
-import {ArrowForwardIos} from "@material-ui/icons";
+import { Button, TextField } from "@material-ui/core";
+import { ArrowForwardIos } from "@material-ui/icons";
+import { validateEmail } from "../Utils";
 
 
 const Registration = () => {
@@ -16,11 +17,6 @@ const Registration = () => {
 
   const _handleSubmit = (e) => {
     e.preventDefault();
-  }
-
-  const validateEmail = (email) => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
   }
 
 
