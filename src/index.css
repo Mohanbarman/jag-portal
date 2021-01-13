@@ -76,6 +76,14 @@ ul {
 
 a {
     text-decoration: none;
+    color: var(--clr-active);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--clr-primary);
+    text-decoration: underline;
 }
 
 h1, h2, h3, h4 {
@@ -149,6 +157,7 @@ p {
 .action-form-container {
     display: flex;
     height: 100vh;
+    justify-content: space-between;
 }
 
 .action-form-right-section,
@@ -159,6 +168,7 @@ p {
 .action-form-left-section {
     margin: 100px;
     position: relative;
+    max-width: 600px;
 }
 
 .action-form-image {
@@ -611,3 +621,26 @@ Login
 =======================
  */
 
+.submit-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*
+=======================
+Registration
+=======================
+ */
+
+.registration-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 40px;
+}
+
+.action-form-input-email {
+    grid-column: 1/-1;
+}

@@ -1,55 +1,88 @@
-import React from 'react';
-import { loginScreenContent } from "../Content";
-import { Button, TextField } from '@material-ui/core';
-import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
-import { useHistory } from 'react-router-dom';
+import React, {useState} from 'react';
+import ActionFormContainer from "../components/ActionFormContainer";
+import { registrationScreenContent } from "../Content";
+import {Button, TextField} from "@material-ui/core";
+import {ArrowForwardIos} from "@material-ui/icons";
 
 
-const styles = (theme) => ({
-  textField: {
-    color: 'white',
-  },
-  input: {
-    color: 'white',
-  }
-})
+const Registration = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-
-const Login = () => {
-  const history = useHistory();
+  const {heading, subheading, image} = registrationScreenContent;
 
   const _handleSubmit = (e) => {
-    e?.preventDefault();
-    console.log(e);
+    e.preventDefault();
   }
 
-  const _handleBack = () => {
-    history.goBack();
+  const validateEmail = (email) => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
   }
+
 
   return(
-    <div className="action-form-container">
-      <section className="action-form-left-section">
-        <h3 className='decorated-title-2'>{loginScreenContent.heading}</h3>
-        <p>{loginScreenContent.subheading}</p>
-        <form action='#' method='post' onSubmit={_handleSubmit} className='action-form-form'>
-          <TextField inputProps={{className: styles.input}} color='primary' label='Email' className='action-form-input' />
-          <TextField inputProps={{className: styles.input}} color='primary' label='Password' className='action-form-input' />
-          <Button
-            variant='contained'
-            endIcon={<ArrowForwardIos/>}
-            className='action-form-submit-btn'
-            type='submit'
-            onClick={_handleSubmit}
-          >Login</Button>
-        </form>
-        <Button onClick={_handleBack} variant='contained' className='action-form-back-btn' startIcon={<ArrowBackIos/>}>Back</Button>
-      </section>
-      <section className="action-form-right-section">
-        <img className="action-form-image" src={loginScreenContent.image} alt=''/>
-      </section>
-    </div>
+    <ActionFormContainer heading={heading} subheading={subheading} image={image}>
+      <form className='action-form-form'>
+        <div className='registration-form-grid'>
+          <TextField
+            color='primary'
+            label='First name'
+            className='action-form-input'
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+          />
+
+          <TextField
+            color='primary'
+            label='Last name'
+            className='action-form-input'
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+          />
+
+          <TextField
+            color='primary'
+            label='Email'
+            className='action-form-input action-form-input-email'
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            error={!validateEmail(email)}
+            helperText={validateEmail(email) ? '' : 'Please enter a valid email'}
+          />
+
+          <TextField
+            color='primary'
+            label='Password'
+            className='action-form-input'
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+
+          <TextField
+            color='primary'
+            label='Confirm password'
+            className='action-form-input'
+            value={confirmPassword}
+            onChange={e => setConfirmPassword(e.target.value)}
+            error={password !== confirmPassword}
+            helperText={password !== confirmPassword ? 'Password didn\'t matched' : ''}
+          />
+        </div>
+        <Button
+          variant='contained'
+          endIcon={<ArrowForwardIos/>}
+          className='action-form-submit-btn'
+          type='submit'
+          color='primary'
+          onClick={_handleSubmit}
+        >Register</Button>
+      </form>
+    </ActionFormContainer>
   )
 }
 
-export default Login;
+export default Registration;
