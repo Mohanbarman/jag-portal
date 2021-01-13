@@ -12,6 +12,7 @@ const Contact = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('');
 
   const _handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ const Contact = () => {
   return(
     <ActionFormContainer heading={heading} subheading={subheading} image={image}>
       <form className='action-form-form'>
-        <div className='contact-us-form-grid registration-form-grid'>
+        <div className='contact-us-form-grid form-grid'>
           <TextField
             color='primary'
             label='First name'
@@ -38,10 +39,22 @@ const Contact = () => {
           />
 
           <TextField
+            color='primary'
+            label='Email'
+            className='action-form-input action-form-input-x2'
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            error={!validateEmail(email)}
+            helperText={validateEmail(email) ? '' : 'Please enter a valid email'}
+          />
+
+          <TextField
             multiline={true}
+            rowsMax={5}
+            rows={5}
             color='primary'
             label='Message'
-            className='action-form-input action-form-message-input'
+            className='action-form-input action-form-input-x2'
             variant='filled'
             value={message}
             onChange={e => setMessage(e.target.value)}

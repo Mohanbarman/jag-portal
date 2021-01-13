@@ -23,7 +23,7 @@ const Registration = () => {
   return(
     <ActionFormContainer heading={heading} subheading={subheading} image={image}>
       <form className='action-form-form'>
-        <div className='registration-form-grid'>
+        <div className='form-grid'>
           <TextField
             color='primary'
             label='First name'
@@ -43,7 +43,7 @@ const Registration = () => {
           <TextField
             color='primary'
             label='Email'
-            className='action-form-input action-form-input-email'
+            className='action-form-input action-form-input-x2'
             value={email}
             onChange={e => setEmail(e.target.value)}
             error={!validateEmail(email)}

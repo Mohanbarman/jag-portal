@@ -7,6 +7,7 @@ import Contact from './routes/Contact';
 import About from './routes/About';
 import Registration from './routes/Registration';
 import Login from './routes/Login';
+import ForgetPassword from './routes/ForgetPassword';
 import Colors from './Colors';
 
 
@@ -38,6 +39,9 @@ const App = () => {
         </Route>
         <Route exact path="/registration">
           <Registration/>
+        </Route>
+        <Route exact path="/forget-password">
+          <ForgetPassword/>
         </Route>
       </Router>
     </ThemeProvider>
