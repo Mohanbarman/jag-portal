@@ -33,7 +33,7 @@ const Login = () => {
             onClick={_handleSubmit}
           >Login</Button>
         </form>
-        <Button onClick={_handleBack} className='action-form-back-btn' startIcon={<ArrowBackIos/>}>Back</Button>
+        <Button onClick={_handleBack} variant='contained' className='action-form-back-btn' startIcon={<ArrowBackIos/>}>Back</Button>
       </section>
       <section className="action-form-right-section">
         <img className="action-form-image" src={loginScreenContent.image} alt=''/>
