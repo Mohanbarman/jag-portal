@@ -16,6 +16,8 @@ import FacebookIcon from './assets/icons/facebook-gold.png';
 import InstagramIcon from './assets/icons/instagram-gold.png';
 import LinkedinIcon from './assets/icons/linkedin-gold.png';
 import YoutubeIcon from './assets/icons/youtube-gold.png';
+// Action form images
+import ActionFormImage1 from './assets/core-leaders/1.jpg';
 
 
 const carouselContent = [
@@ -158,6 +160,15 @@ const footerContent = {
   ]
 }
 
+const loginScreenContent = {
+  heading: 'Login',
+  subheading: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra ' +
+    'tempor, vivamus magnis et ultricies. Senectus quam duis est duis sit vitae, ' +
+    'suscipit est morbi. Aliquet morbi quam egestas maecenas aliquet turpis sit ' +
+    'pellentesque blandit. Sed.',
+  image: ActionFormImage1,
+}
+
 
 export {
   carouselContent,
@@ -165,4 +176,5 @@ export {
   missionVisionContent,
   prospectingVideosContent,
   footerContent,
+  loginScreenContent,
 };
