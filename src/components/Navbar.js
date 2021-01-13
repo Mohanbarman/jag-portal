@@ -53,11 +53,12 @@ const Navbar = () => {
   // Desktop nav bar
   const desktopNav = (
       <ul>
-        {routes.map(i => (
-          <li>
+        {routes.filter(i => i.path !== '/login').map(i => (
+          <li key={i.path}>
             <Link to={i.path}>{i.label}</Link>
           </li>
         ))}
+
         <li>
           <Button onClick={() => {
             history.push('/login')

@@ -4,6 +4,7 @@ import Carousel from '../components/Carousel';
 import CoreLeaders from "../components/CoreLeaders";
 import MissionAndVision from "../components/MissionAndVision";
 import ProspectingVideos from "../components/ProspectingVideos";
+import Footer from "../components/Footer"
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <CoreLeaders/>
       <MissionAndVision/>
       <ProspectingVideos/>
+      <Footer/>
     </>
   )
 }

@@ -11,6 +11,11 @@ import CoreLeader6 from './assets/core-leaders/6.jpg';
 import CarouselImageFirst from './assets/carousel/first.jpg'
 // Mission & Vision
 import VisionAndMissionImage from './assets/mission-and-vision.jpg';
+// Social icons
+import FacebookIcon from './assets/icons/facebook-gold.png';
+import InstagramIcon from './assets/icons/instagram-gold.png';
+import LinkedinIcon from './assets/icons/linkedin-gold.png';
+import YoutubeIcon from './assets/icons/youtube-gold.png';
 
 
 const carouselContent = [
@@ -98,10 +103,66 @@ const prospectingVideosContent = [
   'JdRH3SNvR94',
 ]
 
+const footerContent = {
+  shortBio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ' +
+    'enim, vulputate eu lacus. Diam facilisis vulputate facilisi egestas. Sem ' +
+    'sapien in fermentum pellentesque amet sit suspendisse etiam. Eu arcu morbi ' +
+    'a semper at turpis. In nulla.',
+  pages: [
+    {
+      label: 'Home',
+      path: '/',
+    },
+    {
+      label: 'Login',
+      path: '/login',
+    },
+    {
+      label: 'Registration',
+      path: '/registration',
+    },
+    {
+      label: 'About us',
+      path: '/about'
+    },
+    {
+      label: 'Contact us',
+      path: '/contact'
+    }
+  ],
+  social: [
+    {
+      label: 'Youtube',
+      type: 'youtube',
+      url: '#',
+      image: YoutubeIcon,
+    },
+    {
+      label: 'Linkedin',
+      type: 'linkedin',
+      url: '#',
+      image: LinkedinIcon,
+    },
+    {
+      label: 'Instagram',
+      type: 'instagram',
+      url: '#',
+      image: InstagramIcon,
+    },
+    {
+      label: 'Facebook',
+      type: 'facebook',
+      url: '#',
+      image: FacebookIcon,
+    },
+  ]
+}
+
 
 export {
   carouselContent,
   coreLeadersContent,
   missionVisionContent,
   prospectingVideosContent,
+  footerContent,
 };
