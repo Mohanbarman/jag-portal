@@ -169,6 +169,33 @@ const loginScreenContent = {
   image: ActionFormImage1,
 }
 
+const registrationScreenContent = {
+  heading: 'Register for new account',
+  subheading: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra ' +
+    'tempor, vivamus magnis et ultricies. Senectus quam duis est duis sit vitae, ' +
+    'suscipit est morbi. Aliquet morbi quam egestas maecenas aliquet turpis sit ' +
+    'pellentesque blandit. Sed.',
+  image: ActionFormImage1,
+}
+
+const contactUsScreenContent = {
+  heading: 'Register for new account',
+  subheading: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra ' +
+    'tempor, vivamus magnis et ultricies. Senectus quam duis est duis sit vitae, ' +
+    'suscipit est morbi. Aliquet morbi quam egestas maecenas aliquet turpis sit ' +
+    'pellentesque blandit. Sed.',
+  image: ActionFormImage1,
+}
+
+const forgetPasswordScreenContent = {
+  heading: 'Forget your password ?',
+  subheading: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra ' +
+    'tempor, vivamus magnis et ultricies. Senectus quam duis est duis sit vitae, ' +
+    'suscipit est morbi. Aliquet morbi quam egestas maecenas aliquet turpis sit ' +
+    'pellentesque blandit. Sed.',
+  image: ActionFormImage1,
+}
+
 
 export {
   carouselContent,
@@ -177,4 +204,7 @@ export {
   prospectingVideosContent,
   footerContent,
   loginScreenContent,
+  registrationScreenContent,
+  contactUsScreenContent,
+  forgetPasswordScreenContent,
 };
