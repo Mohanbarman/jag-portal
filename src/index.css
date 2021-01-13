@@ -91,7 +91,7 @@ h4 { font-size: 0.875rem; }
 p {
     margin-bottom: 1.25rem;
     color: var(--clr-primary-10);
-    font-size: 1.3rem;
+    font-size: 1rem;
     line-height: 1.9rem;
 }
 
@@ -100,6 +100,7 @@ p {
     h2 { font-size: 2.5rem; }
     h3 { font-size: 1.75rem; }
     h4 { font-size: 1rem; }
+    p { font-size: 1.3rem; }
     body { font-size: 1rem; }
 
     h1, h2, h3, h4 {
@@ -333,11 +334,13 @@ Mission & vision
     padding: 0;
     display: flex;
     justify-content: space-between;
+    background-color: var(--clr-primary-3);
 }
 
 .mission-vision-left-section {
     padding: 100px;
-    width: 70%;
+    width: 50%;
+    max-width: 900px;
 }
 
 .mission-content-container {
@@ -362,6 +365,10 @@ Mission & vision
     margin-top: 100px;
 }
 
+.read-more-btn {
+    float: right;
+}
+
 /*
 =======================
 Media queries
@@ -376,7 +383,31 @@ Media queries
     .decorated-title-1 {
         text-align: center;
     }
+    .decorated-title-1::after {
+        display: none;
+    }
     .section-watermark-logo {
         display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    .mission-vision-section {
+        flex-direction: column-reverse;
+    }
+
+    .mission-vision-right-section {
+        width: 100%;
+        height: 600px;
+        padding: 40px;
+    }
+
+    .mission-vision-left-section {
+        padding: 40px;
+        width: 100%;
+    }
+
+    .mission-content-container {
+        margin-top: 40px;
     }
 }
