@@ -1,3 +1,5 @@
+import React from 'react';
+
 // Core leaders profile
 import CoreLeader1 from './assets/core-leaders/1.jpg';
 import CoreLeader2 from './assets/core-leaders/2.jpg';
@@ -72,23 +74,34 @@ const coreLeadersContent = [
 ]
 
 const missionVisionContent = {
-    type: 'mission-vision-short',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec, ' +
-      'sit euismod orci sapien consectetur donec id id sollicitudin. Blandit ' +
-      'purus ipsum pretium venenatis orci, sit aliquet ac. Tincidunt commodo,' +
-      ' a enim eu aenean elit enim. Egestas in tortor elementum dictum. Mus ' +
-      'ut placerat ut gravida amet auctor ultricies. A vitae nulla enim mauris,' +
-      ' non. Turpis varius eget scelerisque at arcu enim sollicitudin pellentesque' +
-      ' id. Sit enim malesuada pretium tempor. Viverra faucibus gravida at magna' +
-      '. Netus nunc venenatis diam et ultricies. Venenatis lectus lorem aliquam ' +
-      'faucibus sed at.\n Iaculis at quis suspendisse ac maecenas facilisi ' +
-      'tincidunt ut. Arcu in senectus amet feugiat varius.',
-    image: VisionAndMissionImage,
+  title: 'Mission & Vision',
+  type: 'mission-vision-short',
+  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec, ' +
+    'sit euismod orci sapien consectetur donec id id sollicitudin. Blandit ' +
+    'purus ipsum pretium venenatis orci, sit aliquet ac. Tincidunt commodo,' +
+    ' a enim eu aenean elit enim. Egestas in tortor elementum dictum. Mus ' +
+    'ut placerat ut gravida amet auctor ultricies. A vitae nulla enim mauris,' +
+    ' non. Turpis varius eget scelerisque at arcu enim sollicitudin pellentesque' +
+    ' id. Sit enim malesuada pretium tempor. Viverra faucibus gravida at magna' +
+    '. Netus nunc venenatis diam et ultricies. Venenatis lectus lorem aliquam ' +
+    'faucibus sed at.\n Iaculis at quis suspendisse ac maecenas facilisi ' +
+    'tincidunt ut. Arcu in senectus amet feugiat varius.',
+  image: VisionAndMissionImage,
 }
+
+// Put youtube video id's here
+const prospectingVideosContent = [
+  'JdRH3SNvR94',
+  'JdRH3SNvR94',
+  'JdRH3SNvR94',
+  'JdRH3SNvR94',
+  'JdRH3SNvR94',
+]
 
 
 export {
   carouselContent,
   coreLeadersContent,
   missionVisionContent,
+  prospectingVideosContent,
 };

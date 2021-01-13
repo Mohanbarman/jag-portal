@@ -23,7 +23,7 @@ const MissionAndVision = () => {
   return(
     <section className="mission-vision-section">
       <div className="mission-vision-left-section">
-        <h1 className="decorated-title-1">Mission & Vision</h1>
+        <h1 className="decorated-title-1">{missionVisionContent.title}</h1>
         <div className="mission-content-container">
           <p>{missionVisionContent.text}</p>
         </div>
