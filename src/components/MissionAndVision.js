@@ -2,22 +2,10 @@ import React from 'react';
 import { missionVisionContent } from "../Content";
 import { Button } from "@material-ui/core";
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import { makeStyles } from '@material-ui/core';
-import  Colors  from '../Colors';
 import { useHistory } from 'react-router-dom';
 
 
-const useStyles = makeStyles({
-  textPrimary: {
-    color: Colors.primaryColor,
-  },
-  root: {
-    marginTop: "3rem",
-  }
-})
-
 const MissionAndVision = () => {
-  const classes = useStyles();
   const history = useHistory();
 
   return(
@@ -29,7 +17,6 @@ const MissionAndVision = () => {
         </div>
         <Button
           endIcon={<ArrowForwardIcon/>}
-          classes={classes}
           color="primary"
           variant="text"
           className="read-more-btn"

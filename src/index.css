@@ -669,3 +669,13 @@ Banner image
     display: inline-block;
     margin: 0;
 }
+
+/*
+=======================
+Vision
+=======================
+*/
+.vision-section {
+    padding-top: 100px;
+    background-color: var(--clr-primary-5);
+}

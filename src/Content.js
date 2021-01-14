@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Core leaders profile
 import CoreLeader1 from './assets/core-leaders/1.jpg';
 import CoreLeader2 from './assets/core-leaders/2.jpg';
@@ -196,6 +194,28 @@ const forgetPasswordScreenContent = {
   image: ActionFormImage1,
 }
 
+const aboutUsContent = {
+  mission: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet a malesuada' +
+    ' ac interdum pharetra. Et et amet, lacus faucibus magna convallis. Ut massa diam ' +
+    'nisl, auctor quam imperdiet. Nibh aliquam tellus hendrerit mollis bibendum et. Sed ' +
+    'posuere adipiscing morbi pellentesque ac. Id leo nisi faucibus ligula blandit sit non ' +
+    'viverra. Varius odio quisque posuere aliquam odio diam sodales scelerisque. Nullam ' +
+    'egestas platea augue euismod eleifend habitasse in mattis. Venenatis, at nunc ' +
+    'consectetur dignissim lacinia elit in. Dignissim cras eget ipsum neque eget morbi ' +
+    'nulla placerat proin. Leo molestie et congue.',
+  vision: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet a malesuada' +
+    ' ac interdum pharetra. Et et amet, lacus faucibus magna convallis. Ut massa diam ' +
+    'nisl, auctor quam imperdiet. Nibh aliquam tellus hendrerit mollis bibendum et. Sed ' +
+    'posuere adipiscing morbi pellentesque ac. Id leo nisi faucibus ligula blandit sit non ' +
+    'viverra. Varius odio quisque posuere aliquam odio diam sodales scelerisque. Nullam ' +
+    'egestas platea augue euismod eleifend habitasse in mattis. Venenatis, at nunc ' +
+    'consectetur dignissim lacinia elit in. Dignissim cras eget ipsum neque eget morbi ' +
+    'nulla placerat proin. Leo molestie et congue.',
+  bannerImage: CarouselImageFirst,
+  missionImage: CoreLeader1,
+  visionImage: CoreLeader2,
+}
+
 
 export {
   carouselContent,
@@ -207,4 +227,5 @@ export {
   registrationScreenContent,
   contactUsScreenContent,
   forgetPasswordScreenContent,
+  aboutUsContent,
 };
