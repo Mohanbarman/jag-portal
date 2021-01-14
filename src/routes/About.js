@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import { aboutUsContent } from '../Content';
 import Footer from '../components/Footer';
 
+
 const About = () => {
   return (
     <>
@@ -33,7 +34,7 @@ const About = () => {
         </div>
       </section>
 
-      <Footer/>
+      <Footer />
     </>
   );
 }
