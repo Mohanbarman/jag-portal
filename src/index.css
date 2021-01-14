@@ -111,10 +111,6 @@ p {
     h4 { font-size: 1rem; }
     p { font-size: 1.3rem; }
     body { font-size: 1rem; }
-
-    h1, h2, h3, h4 {
-        /*line-height: 1;*/
-    }
 }
 
 .section {
@@ -206,7 +202,7 @@ p {
         var(--clr-primary-gradient-2),
         var(--clr-primary-gradient-1)
     );
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 3rem;
     display: inline-block;
@@ -243,7 +239,7 @@ Nav bar
 
 .nav-wrapper a {
     background: var(--clr-primary-gradient);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -679,3 +675,26 @@ Vision
     padding-top: 100px;
     background-color: var(--clr-primary-5);
 }
+
+
+/*
+=======================
+Dashboard
+=======================
+*/
+
+.home-auth-left-section {
+    padding: 50px;
+    background-color: var(--clr-primary-4);
+    width: 70%;
+}
+
+.upcoming-meetings-list {
+    background-color: var(--clr-primary-6);
+}
+
+.dashboard-subheading {
+    margin-bottom: 50px;
+    color: var(--clr-primary-11);
+}
+

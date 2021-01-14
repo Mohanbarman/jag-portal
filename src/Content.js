@@ -216,6 +216,25 @@ const aboutUsContent = {
   visionImage: CoreLeader2,
 }
 
+// demo api content
+const demoProfile = {
+  id: 1,
+  firstName: 'Sohan',
+  lastName: 'Kumar',
+  email: 'sohan@gmail.com',
+  landingPageUrl: 'https://example.com/landing-page',
+  profileImage: CoreLeader4,
+  isAdmin: true,
+}
+
+const demoUpcomingMeetings = [1,2,3,4,5,6,7,8,9,10]
+  .map((i, index) => ({
+    id: i,
+    name: 'Sem amet massa vel morbi at posuerevel morbi at posuere',
+    date: Date.now(),
+    platform: 'zoom',
+    link: 'https://exmple.com/meeting',
+  }))
 
 export {
   carouselContent,
@@ -228,4 +247,6 @@ export {
   contactUsScreenContent,
   forgetPasswordScreenContent,
   aboutUsContent,
+  demoProfile,
+  demoUpcomingMeetings,
 };

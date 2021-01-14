@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { AuthProvider } from './context/AuthContext';
 // PAGES
 import Home from './routes/Home';
 import Contact from './routes/Contact';
@@ -22,28 +23,30 @@ const theme = createMuiTheme({
 
 
 const App = () => {
-  return(
+  return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <Route exact path="/">
-          <Home/>
-        </Route>
-        <Route exact path="/contact">
-          <Contact/>
-        </Route>
-        <Route exact path="/about">
-          <About/>
-        </Route>
-        <Route exact path="/login">
-          <Login/>
-        </Route>
-        <Route exact path="/registration">
-          <Registration/>
-        </Route>
-        <Route exact path="/forget-password">
-          <ForgetPassword/>
-        </Route>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/contact">
+            <Contact />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/registration">
+            <Registration />
+          </Route>
+          <Route exact path="/forget-password">
+            <ForgetPassword />
+          </Route>
+        </Router>
+      </AuthProvider>
     </ThemeProvider>
   )
 }
