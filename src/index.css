@@ -639,3 +639,33 @@ Action forms
     grid-column: 1/-1;
 }
 
+
+/*
+=======================
+Banner image
+=======================
+*/
+.banner,
+.banner-image {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+    position: relative;
+}
+
+.banner-title-container {
+    height: 20%;
+    background-color: rgba(27, 21, 12, .9);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-title-container h3 {
+    display: inline-block;
+    margin: 0;
+}
