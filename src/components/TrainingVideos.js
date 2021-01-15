@@ -16,15 +16,15 @@ const TrainingVideos = () => {
   return(
     <div className='training-videos-content'>
       <h3 className='dashboard-subheading'>Training videos</h3>
-      <div ref={trainingVideosContainerRef} className='training-videos-container'>
-        {demoTrainingVideos.map((videoID, index) => (
-          <YouTube
-            videoId={videoID}
-            containerClassName='youtube-video-item-training'
-            className='youtube-video-item-training'
-          />
-        ))}
-
+      <div className='training-videos-container-outer'>
+        <div ref={trainingVideosContainerRef} className='training-videos-container'>
+          {demoTrainingVideos.map((videoID, index) => (
+            <YouTube
+              videoId={videoID}
+              containerClassName='youtube-video-item-training'
+              className='youtube-video-item-training'
+            />
+          ))}
         <div className='icon-btn-container-left'>
           <IconButton onClick={() => _handleScroll(-400)} className='upcoming-meetings-scroll-btn' color='primary' variant='filled'>
             <ArrowBackIos/>
@@ -35,6 +35,7 @@ const TrainingVideos = () => {
           <IconButton onClick={() => _handleScroll(400)} className='upcoming-meetings-scroll-btn' color='primary' variant='filled'>
             <ArrowForwardIos/>
           </IconButton>
+        </div>
         </div>
 
       </div>

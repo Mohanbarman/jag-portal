@@ -709,7 +709,7 @@ Dashboard
     overflow: auto;
     gap: 2rem;
     scrollbar-width: none;
-    position: relative;
+    scroll-behavior: smooth;
 }
 
 .upcoming-meetings-section {
@@ -738,5 +738,16 @@ Dashboard
     left: -1.5rem;
 }
 .icon-btn-container-right {
-    right: 1.5rem;
+    right: -1.5rem;
+}
+
+.training-videos-container-outer {
+    position: relative;
+}
+
+
+@media (max-width: 1200px) {
+    .home-auth-left-section {
+        width: 100%;
+    }
 }
