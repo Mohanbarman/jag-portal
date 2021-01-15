@@ -1,43 +1,66 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import YouTube from "react-youtube";
 import { demoTrainingVideos } from "../Content";
-import {IconButton} from "@material-ui/core";
-import {ArrowBackIos, ArrowDownwardRounded, ArrowForwardIos} from "@material-ui/icons";
+import { IconButton } from "@material-ui/core";
+import { ArrowBackIos, ArrowForwardIos} from "@material-ui/icons";
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from 'pure-react-carousel';
+
+
+const TrainingVideosCarousel = () => {
+  return(
+    <CarouselProvider
+      naturalSlideHeight={50}
+      naturalSlideWidth={100}
+      totalSlides={demoTrainingVideos.length}
+      visibleSlides={2.1}
+    >
+      <Slider>
+        {demoTrainingVideos.map((videoID, index) => (
+          <Slide index={index} key={index}>
+            <YouTube
+              videoId={videoID}
+              containerClassName='training-video-yt-container'
+              className='training-video-yt-item'
+            />
+          </Slide>
+        ))}
+      </Slider>
+      <TrainingCarouselNavButtons/>
+    </CarouselProvider>
+  )
+}
+
+const TrainingCarouselNavButtons = () => {
+  return (
+    <>
+      <ButtonBack className="carousel-nav-btn carousel-prev-btn carousel-training-videos-nav-btn">
+        <IconButton color="primary">
+          <ArrowBackIos/>
+        </IconButton>
+      </ButtonBack>
+      <ButtonNext className="carousel-nav-btn carousel-next-btn carousel-training-videos-nav-btn">
+        <IconButton color="primary">
+          <ArrowForwardIos/>
+        </IconButton>
+      </ButtonNext>
+    </>
+  )
+}
+
 
 
 const TrainingVideos = () => {
-  const trainingVideosContainerRef = useRef(null);
-
-  const _handleScroll = (offset) => {
-    trainingVideosContainerRef.current?.scrollBy(offset, 0);
-  }
-
-
-  return(
+  return (
     <div className='training-videos-content'>
       <h3 className='dashboard-subheading'>Training videos</h3>
       <div className='training-videos-container-outer'>
-        <div ref={trainingVideosContainerRef} className='training-videos-container'>
-          {demoTrainingVideos.map((videoID, index) => (
-            <YouTube
-              videoId={videoID}
-              containerClassName='youtube-video-item-training'
-              className='youtube-video-item-training'
-            />
-          ))}
-        <div className='icon-btn-container-left'>
-          <IconButton onClick={() => _handleScroll(-400)} className='upcoming-meetings-scroll-btn' color='primary' variant='filled'>
-            <ArrowBackIos/>
-          </IconButton>
-        </div>
-
-        <div className='icon-btn-container-right'>
-          <IconButton onClick={() => _handleScroll(400)} className='upcoming-meetings-scroll-btn' color='primary' variant='filled'>
-            <ArrowForwardIos/>
-          </IconButton>
-        </div>
-        </div>
-
+        <TrainingVideosCarousel/>
       </div>
     </div>
   )

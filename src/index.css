@@ -686,7 +686,7 @@ Dashboard
 .home-auth-left-section {
     padding: 50px;
     background-color: var(--clr-primary-4);
-    width: 70%;
+    /* width: 100%; */
 }
 
 .upcoming-meetings-list {
@@ -714,6 +714,7 @@ Dashboard
 
 .upcoming-meetings-section {
     position: relative;
+    max-width: 1200px;
 }
 
 .icon-btn-container {
@@ -745,9 +746,48 @@ Dashboard
     position: relative;
 }
 
+.home-auth-container-flex {
+    display: flex;
+    width: 100%;
+}
 
-@media (max-width: 1200px) {
-    .home-auth-left-section {
-        width: 100%;
+.home-auth-left-section {
+    flex-grow: 3;
+}
+
+.home-auth-right-section {
+    flex-grow: 1;
+    background-color: var(--clr-primary-5);
+}
+
+.carousel-training-videos-nav-btn.carousel-prev-btn {
+    left: -1.5rem;
+}
+
+.carousel-training-videos-nav-btn.carousel-next-btn {
+    right: -1.5rem;
+}
+
+.training-video-yt-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-profile-image-container {
+    padding-top: 5rem;
+}
+
+.landing-page-url-input {
+     width: 100%;
+}
+
+.landing-page-url-container {
+    padding: 0 3rem;
+}
+
+@media (max-width: 1500px) {
+    .home-auth-container-flex {
+        flex-direction: column;
     }
 }

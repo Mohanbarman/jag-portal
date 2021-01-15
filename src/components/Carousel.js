@@ -13,17 +13,8 @@ import {
 import {IconButton} from "@material-ui/core";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import {makeStyles} from '@material-ui/core';
-import Colors from '../Colors';
 import {carouselContent} from "../Content";
 
-
-// Button nav button styles
-const useStyles = makeStyles({
-  colorPrimary: {
-    color: Colors.primaryColor,
-  }
-})
 
 
 const Carousel = () => {
@@ -51,17 +42,16 @@ const Carousel = () => {
 };
 
 const CarouselNavButtons = () => {
-  const classes = useStyles();
 
   return (
     <>
       <ButtonBack className="carousel-nav-btn carousel-prev-btn">
-        <IconButton classes={classes} color="primary">
+        <IconButton color="primary">
           <ArrowBackIosIcon/>
         </IconButton>
       </ButtonBack>
       <ButtonNext className="carousel-nav-btn carousel-next-btn">
-        <IconButton classes={classes} color="primary">
+        <IconButton color="primary">
           <ArrowForwardIosIcon/>
         </IconButton>
       </ButtonNext>
