@@ -691,6 +691,8 @@ Dashboard
 
 .upcoming-meetings-list {
     background-color: var(--clr-primary-6);
+    scrollbar-width: none;
+    scroll-behavior: smooth;
 }
 
 .dashboard-subheading {
@@ -698,3 +700,43 @@ Dashboard
     color: var(--clr-primary-11);
 }
 
+.training-videos-content {
+    margin-top: 100px;
+}
+
+.training-videos-container {
+    display: flex;
+    overflow: auto;
+    gap: 2rem;
+    scrollbar-width: none;
+    position: relative;
+}
+
+.upcoming-meetings-section {
+    position: relative;
+}
+
+.icon-btn-container {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: var(--clr-primary-7);
+}
+
+.icon-btn-container-right,
+.icon-btn-container-left {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--clr-primary-7);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-btn-container-left {
+    left: -1.5rem;
+}
+.icon-btn-container-right {
+    right: 1.5rem;
+}

@@ -236,6 +236,10 @@ const demoUpcomingMeetings = [1,2,3,4,5,6,7,8,9,10]
     link: 'https://exmple.com/meeting',
   }))
 
+const demoTrainingVideos = [1,2,3,4,5,6,7,8]
+  .map(() => 'JdRH3SNvR94')
+
+
 export {
   carouselContent,
   coreLeadersContent,
@@ -247,6 +251,9 @@ export {
   contactUsScreenContent,
   forgetPasswordScreenContent,
   aboutUsContent,
+
+  // Demo content
   demoProfile,
   demoUpcomingMeetings,
+  demoTrainingVideos,
 };

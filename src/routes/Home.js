@@ -6,6 +6,7 @@ import MissionAndVision from "../components/MissionAndVision";
 import ProspectingVideos from "../components/ProspectingVideos";
 import Footer from "../components/Footer"
 import UpcomingMeetings from "../components/UpcomingMeetings";
+import TrainingVideos from "../components/TrainingVideos";
 import { authContext } from "../context/AuthContext";
 
 
@@ -21,17 +22,21 @@ const _unauthenticatedContent = (
   </>
 )
 
+// Content for authenticated users
+const _authenticatedContent = (
+  <>
+    <Navbar/>
+    <section className='home-auth-left-section'>
+      <UpcomingMeetings/>
+      <TrainingVideos/>
+    </section>
+  </>
+)
+
 const Home = () => {
   const { isAuthenticated } = useContext(authContext);
 
-  return (!isAuthenticated ? _unauthenticatedContent :
-    <>
-      <Navbar/>
-      <section className='home-auth-left-section'>
-        <UpcomingMeetings/>
-      </section>
-    </>
-  )
+  return (isAuthenticated ? _authenticatedContent : _unauthenticatedContent)
 }
 
 export default Home;
