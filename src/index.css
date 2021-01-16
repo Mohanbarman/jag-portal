@@ -752,12 +752,14 @@ Dashboard
 }
 
 .home-auth-left-section {
-    flex-grow: 3;
+    flex-grow: 4;
 }
 
 .home-auth-right-section {
     flex-grow: 1;
-    background-color: var(--clr-primary-5);
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
 }
 
 .carousel-training-videos-nav-btn.carousel-prev-btn {
@@ -784,6 +786,38 @@ Dashboard
 
 .landing-page-url-container {
     padding: 0 3rem;
+    margin-top: 2rem;
+}
+
+.dashboard-center-text-right {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.background-logo-dasboard {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%) rotate(-60deg);
+    object-fit: cover;
+    z-index: -1;
+}
+
+.create-new-meeting-container-right-bar {
+    position: relative;
+    margin-top: 100px;
+}
+
+.create-new-meeting-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem;
+}
+
+.create-new-meeting-btn {
+    width: 100%;
 }
 
 @media (max-width: 1500px) {

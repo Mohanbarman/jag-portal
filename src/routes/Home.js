@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
 import CoreLeaders from "../components/CoreLeaders";
@@ -9,8 +9,10 @@ import UpcomingMeetings from "../components/UpcomingMeetings";
 import TrainingVideos from "../components/TrainingVideos";
 import { authContext } from "../context/AuthContext";
 import RoundedImageContainer from '../components/RoundedImageContainer';
-import {IconButton, InputAdornment, Input, InputLabel} from '@material-ui/core';
+import {IconButton, InputAdornment, Input} from '@material-ui/core';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import BackgroundLogo from '../assets/watermark-logo.png';
+import CreateNewMeeting from "../components/CreateNewMeeting";
 
 
 // Content for unauthenticated users
@@ -46,6 +48,7 @@ const AuthenticatedContent = () => {
           <TrainingVideos />
         </section>
         <section className='home-auth-right-section'>
+          <img src={BackgroundLogo} alt='' className='background-logo-dasboard'/>
           <div className='auth-profile-image-container'>
             <RoundedImageContainer
               image={profile.profileImage}
@@ -53,10 +56,9 @@ const AuthenticatedContent = () => {
             />
           </div>
           <div className='landing-page-url-container'>
-            <InputLabel htmlFor="landing-page-input">Landing page</InputLabel>
+            <h4 className='dashboard-center-text-right'>Landing page</h4>
             <Input
               id='landing-page-input'
-              label='Landing page'
               variant='standard'
               className='landing-page-url-input'
               value={profile.landingPageUrl}
@@ -69,6 +71,11 @@ const AuthenticatedContent = () => {
               }
             />
           </div>
+          {profile?.isAdmin && (
+            <div className='create-new-meeting-container-right-bar'>
+              <CreateNewMeeting/>
+            </div>
+          )}
         </section>
       </div>
     </>
