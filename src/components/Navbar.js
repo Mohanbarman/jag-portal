@@ -18,7 +18,7 @@ import {
 const Navbar = ({routes}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const {isAuthenticated} = useContext(authContext);
+  const {isAuthenticated, setIsAuthenticated} = useContext(authContext);
 
   const history = useHistory();
   const classes = navStyles();
@@ -49,6 +49,22 @@ const Navbar = ({routes}) => {
             </Button>
           </li>
         }
+
+        {
+          isAuthenticated && (
+            <Button
+              className='btn-primary'
+              variant='contained'
+              color='primary'
+              onClick={() => {
+                setIsAuthenticated(false);
+                history.push('/');
+              }}
+            >
+              Logout
+            </Button>
+          )
+        }
       </ul>
   )
 
@@ -61,13 +77,23 @@ const Navbar = ({routes}) => {
         <MenuIcon/>
       </IconButton>
 
-      <Drawer classes={classes} anchor="right" onClose={() => setIsDrawerOpen(false)} open={isDrawerOpen}>
+      <Drawer
+        classes={classes}
+        anchor="right"
+        onClose={() => setIsDrawerOpen(false)}
+        open={isDrawerOpen}
+      >
         <List>
           {routes?.map((i, index) => (
             <ListItem button key={index} onClick={() =>  history.push(i.path)}>
               <ListItemText className="text" primary={i.label} />
             </ListItem>
           ))}
+          {isAuthenticated && (
+            <ListItem button onClick={() => setIsAuthenticated(false)}>
+              <ListItemText className="text" primary="Logout"/>
+            </ListItem>
+          )}
         </List>
         <Divider />
       </Drawer>

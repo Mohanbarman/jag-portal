@@ -1,19 +1,23 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {loginScreenContent} from "../Content";
 import {Button, TextField} from '@material-ui/core';
 import {ArrowForwardIos} from "@material-ui/icons";
 import ActionFormContainer from "../components/ActionFormContainer";
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {validateEmail} from "../Utils";
+import {authContext} from "../context/AuthContext";
 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {setIsAuthenticated} = useContext(authContext);
+  const history = useHistory();
 
   const _handleSubmit = (e) => {
     e?.preventDefault();
-    console.log(e);
+    setIsAuthenticated(true);
+    history.push('/');
   }
 
   return (
