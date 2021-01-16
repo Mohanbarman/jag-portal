@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Banner from '../components/Banner';
 import Navbar from '../components/Navbar';
 import { aboutUsContent } from '../Content';
 import Footer from '../components/Footer';
+import {authContext} from "../context/AuthContext";
+import {authenticatedRoutes, unauthenticatedRoutes} from "../Routes";
 
 
 const About = () => {
+  const {isAuthenticated} = useContext(authContext);
+
   return (
     <>
-      <Navbar />
+      <Navbar routes={isAuthenticated ? authenticatedRoutes : unauthenticatedRoutes} />
       <Banner title='/About us' image={aboutUsContent.bannerImage} />
       <section className="mission-vision-section">
         <div className="mission-vision-left-section">

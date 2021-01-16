@@ -1,19 +1,18 @@
 import React from 'react';
-import { missionVisionContent } from "../Content";
 import { Button } from "@material-ui/core";
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { useHistory } from 'react-router-dom';
 
 
-const MissionAndVision = () => {
+const MissionAndVision = ({content}) => {
   const history = useHistory();
 
   return(
     <section className="mission-vision-section">
       <div className="mission-vision-left-section">
-        <h1 className="decorated-title-1">{missionVisionContent.title}</h1>
+        <h1 className="decorated-title-1">{content.title}</h1>
         <div className="mission-content-container">
-          <p>{missionVisionContent.text}</p>
+          <p>{content.text}</p>
         </div>
         <Button
           endIcon={<ArrowForwardIcon/>}
@@ -26,7 +25,7 @@ const MissionAndVision = () => {
         </Button>
       </div>
       <div className="mission-vision-right-section">
-        <img src={missionVisionContent.image} alt={missionVisionContent.text}/>
+        <img src={content.image} alt={content.text}/>
       </div>
     </section>
   )

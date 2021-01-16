@@ -46,3 +46,18 @@ export const adminAdditionalRoutes = [
     path: '/create-meeting',
   }
 ]
+
+export const landingPageRoutes = [
+  {
+    label: 'Home',
+    path: '/',
+  },
+  {
+    label: 'Contact',
+    path: '/contact'
+  },
+  {
+    label: 'About us',
+    path: '/about'
+  }
+]

@@ -216,6 +216,33 @@ const aboutUsContent = {
   visionImage: CoreLeader2,
 }
 
+const leadFormContent = {
+  bannerimage: CarouselImageFirst,
+  title: 'Mission&Vision',
+  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec, ' +
+    'sit euismod orci sapien consectetur donec id id sollicitudin. Blandit ' +
+    'purus ipsum pretium venenatis orci, sit aliquet ac. Tincidunt commodo,' +
+    ' a enim eu aenean elit enim. Egestas in tortor elementum dictum. Mus ' +
+    'ut placerat ut gravida amet auctor ultricies. A vitae nulla enim mauris,' +
+    ' non. Turpis varius eget scelerisque at arcu enim sollicitudin pellentesque' +
+    ' id. Sit enim malesuada pretium tempor. Viverra faucibus gravida at magna' +
+    '. Netus nunc venenatis diam et ultricies. Venenatis lectus lorem aliquam ' +
+    'faucibus sed at.\n Iaculis at quis suspendisse ac maecenas facilisi ' +
+    'tincidunt ut. Arcu in senectus amet feugiat varius.',
+  image: VisionAndMissionImage,
+  formTitle: 'Lorem ipsum',
+  formDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec, ' +
+    'sit euismod orci sapien consectetur donec id id sollicitudin. Blandit ' +
+    'purus ipsum pretium venenatis orci, sit aliquet ac. Tincidunt commodo,' +
+    ' a enim eu aenean elit enim. Egestas in tortor elementum dictum. Mus ' +
+    'ut placerat ut gravida amet auctor ultricies. A vitae nulla enim mauris,' +
+    ' non. Turpis varius eget scelerisque at arcu enim sollicitudin pellentesque' +
+    ' id. Sit enim malesuada pretium tempor. Viverra faucibus gravida at magna' +
+    '. Netus nunc venenatis diam et ultricies. Venenatis lectus lorem aliquam ' +
+    'faucibus sed at.\n Iaculis at quis suspendisse ac maecenas facilisi ' +
+    'tincidunt ut. Arcu in senectus amet feugiat varius.',
+}
+
 // demo api content
 const demoProfile = {
   id: 1,
@@ -253,6 +280,7 @@ export {
   contactUsScreenContent,
   forgetPasswordScreenContent,
   aboutUsContent,
+  leadFormContent,
 
   // Demo content
   demoProfile,

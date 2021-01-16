@@ -13,17 +13,12 @@ import {
   ListItem,
   ListItemText,
 } from "@material-ui/core";
-import {
-  authenticatedRoutes,
-  unauthenticatedRoutes,
-  adminAdditionalRoutes
-} from "../Routes";
 
 
-const Navbar = () => {
+const Navbar = ({routes}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const {isAuthenticated, profile} = useContext(authContext);
+  const {isAuthenticated} = useContext(authContext);
 
   const history = useHistory();
   const classes = navStyles();
@@ -34,11 +29,12 @@ const Navbar = () => {
     });
   }, [])
 
+  console.log(routes);
+
   // Desktop nav bar
   const desktopNav = (
       <ul>
-        {(isAuthenticated ? authenticatedRoutes : unauthenticatedRoutes)
-          .filter(i => i.path !== '/login').map(i => (
+        {routes?.filter(i => i.path !== '/login').map(i => (
             <li key={i.path}>
               <Link to={i.path}>{i.label}</Link>
             </li>
@@ -67,10 +63,7 @@ const Navbar = () => {
 
       <Drawer classes={classes} anchor="right" onClose={() => setIsDrawerOpen(false)} open={isDrawerOpen}>
         <List>
-          {(isAuthenticated
-            ? [...authenticatedRoutes, ...(profile.isAdmin ? adminAdditionalRoutes : [])]
-            : unauthenticatedRoutes
-          ).map((i, index) => (
+          {routes?.map((i, index) => (
             <ListItem button key={index} onClick={() =>  history.push(i.path)}>
               <ListItemText className="text" primary={i.label} />
             </ListItem>

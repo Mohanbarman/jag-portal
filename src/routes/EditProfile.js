@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import {authContext} from "../context/AuthContext";
 import RoundedImageContainer from "../components/RoundedImageContainer";
 import {Button, TextField} from "@material-ui/core";
+import {authenticatedRoutes} from "../Routes";
 
 
 const EditProfile = () => {
@@ -20,7 +21,7 @@ const EditProfile = () => {
 
   return(
     <>
-      <Navbar/>
+      <Navbar routes={authenticatedRoutes}/>
       <div className='edit-profile-container'>
         <h3>Edit Profile</h3>
         <div className='edit-profile-image-container'>

@@ -10,6 +10,7 @@ import Registration from './routes/Registration';
 import Login from './routes/Login';
 import ForgetPassword from './routes/ForgetPassword';
 import EditProfile from "./routes/EditProfile";
+import LeadForm from "./routes/LeadForm";
 
 import Colors from './Colors';
 
@@ -49,6 +50,9 @@ const App = () => {
           </Route>
           <Route exact path="/edit-profile">
             <EditProfile/>
+          </Route>
+          <Route exact path="/lead-form">
+            <LeadForm/>
           </Route>
         </Router>
       </AuthProvider>

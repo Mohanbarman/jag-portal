@@ -5,7 +5,7 @@ import { demoProfile } from '../Content';
 const authContext = createContext();
 
 const AuthProvider = (props) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [profile, setProfile] = useState(demoProfile)
 
     return <authContext.Provider value={{

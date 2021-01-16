@@ -849,8 +849,42 @@ Dashboard
     float: right;
 }
 
+.edit-profile-change-password-container {
+    margin: 4rem 0;
+}
+
+.edit-profile-container h3 {
+    font-size: 1.4rem;
+}
+
 @media (max-width: 1500px) {
     .home-auth-container-flex {
         flex-direction: column;
     }
+}
+
+/*
+=======================
+Lead form
+=======================
+*/
+.banner-image-lead-form {
+    width: 100%;
+    object-fit: cover;
+    height: 35vh;
+}
+
+.lead-form-input-container {
+    padding: 100px;
+}
+
+.lead-form-input-container h1 {
+    margin-bottom: 100px;
+}
+
+.lead-form-fields-wrapper {
+    margin: 100px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
 }

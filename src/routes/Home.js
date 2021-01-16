@@ -13,15 +13,20 @@ import {IconButton, InputAdornment, Input} from '@material-ui/core';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import BackgroundLogo from '../assets/watermark-logo.png';
 import CreateNewMeeting from "../components/CreateNewMeeting";
+import {missionVisionContent} from "../Content";
+import {
+  authenticatedRoutes,
+  unauthenticatedRoutes,
+} from "../Routes";
 
 
 // Content for unauthenticated users
 const _unauthenticatedContent = (
   <>
-    <Navbar />
+    <Navbar routes={unauthenticatedRoutes}/>
     <Carousel />
     <CoreLeaders />
-    <MissionAndVision />
+    <MissionAndVision content={missionVisionContent}/>
     <ProspectingVideos />
     <Footer />
   </>
@@ -41,7 +46,7 @@ const AuthenticatedContent = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar routes={authenticatedRoutes}/>
       <div className='home-auth-container-flex'>
         <section className='home-auth-left-section'>
           <UpcomingMeetings />
@@ -80,7 +85,7 @@ const AuthenticatedContent = () => {
       </div>
     </>
   )
-}
+};
 
 const Home = () => {
   const { isAuthenticated } = useContext(authContext);
