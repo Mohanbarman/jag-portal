@@ -9,6 +9,8 @@ import About from './routes/About';
 import Registration from './routes/Registration';
 import Login from './routes/Login';
 import ForgetPassword from './routes/ForgetPassword';
+import EditProfile from "./routes/EditProfile";
+
 import Colors from './Colors';
 
 
@@ -44,6 +46,9 @@ const App = () => {
           </Route>
           <Route exact path="/forget-password">
             <ForgetPassword />
+          </Route>
+          <Route exact path="/edit-profile">
+            <EditProfile/>
           </Route>
         </Router>
       </AuthProvider>

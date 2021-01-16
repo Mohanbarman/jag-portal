@@ -820,6 +820,35 @@ Dashboard
     width: 100%;
 }
 
+.edit-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.edit-profile-image-container {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-profile-input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin: 3rem 0;
+}
+
+.edit-profile-fields-container {
+    width: 40vw;
+}
+
+.edit-profile-submit-btn {
+    float: right;
+}
+
 @media (max-width: 1500px) {
     .home-auth-container-flex {
         flex-direction: column;

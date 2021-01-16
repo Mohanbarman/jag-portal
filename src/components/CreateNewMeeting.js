@@ -18,27 +18,11 @@ import {
 } from '@material-ui/pickers';
 
 
-
 const CreateNewMeeting = () => {
   const [meetingName, setMeetingName] = useState('');
   const [platform, setPlatform] = useState(new Date(Date.now()));
   const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const [link, setLink] = useState('');
-
-  // For Validation
-  const [isInputErrors, setIsInputError] = useState({
-    meetingName: false,
-    platform: false,
-    selectedDate: false,
-    link: false,
-  })
-
-  const [errorMessages, setErrorMessages] = useState({
-    meetingName: '',
-    platform: '',
-    selectedDate: '',
-    link: '',
-  });
 
   const _handleSubmit = () => {
     if (meetingName && platform && selectedDate && link) {
@@ -58,8 +42,6 @@ const CreateNewMeeting = () => {
         onChange={i => setMeetingName(i.target.value)}
         variant='standard'
         className='create-new-meeting-input-x3'
-        error={isInputErrors['meetingName']}
-        helperText={errorMessages['meetingName']}
       />
 
       <FormControl>
@@ -69,7 +51,6 @@ const CreateNewMeeting = () => {
           value={platform}
           onChange={i => setPlatform(i.target.value)}
           placeholder='Select platform'
-          error={isInputErrors['platform']}
         >
           {demoPlatforms.map(i => (
             <MenuItem value={i}>{i}</MenuItem>
