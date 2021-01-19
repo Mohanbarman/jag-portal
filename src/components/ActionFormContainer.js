@@ -14,9 +14,11 @@ const ActionFormContainer = ({image, heading, subheading, children}) => {
   return(
     <div className="action-form-container">
       <section className="action-form-left-section">
-        <h3 className='decorated-title-2'>{heading}</h3>
-        <p>{subheading}</p>
-        {children}
+        <div className='action-form-left-section-content'>
+          <h3 className='decorated-title-2'>{heading}</h3>
+          <p className='action-form-subheading'>{subheading}</p>
+          {children}
+        </div>
         <Button
           onClick={_handleBack}
           color='primary'
