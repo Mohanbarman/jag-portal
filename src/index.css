@@ -104,15 +104,6 @@ p {
     line-height: 1.9rem;
 }
 
-@media screen and (min-width: 800px) {
-    h1 { font-size: 4rem; }
-    h2 { font-size: 2.5rem; }
-    h3 { font-size: 1.75rem; }
-    h4 { font-size: 1rem; }
-    p { font-size: 1.3rem; }
-    body { font-size: 1rem; }
-}
-
 .section {
     padding: 100px;
     position: relative;
@@ -223,48 +214,6 @@ p {
     /*margin-top: 10rem;*/
 }
 
-/*
-Action form media queries
-*/
-@media (max-width: 1000px) {
-    .action-form-right-section {
-        display: none;
-    }
-
-    .action-form-container {
-        height: 100%;
-    }
-}
-@media (max-width: 900px) {
-    .decorated-title-2 {
-        align-self: center;
-        font-size: 2rem;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    .action-form-subheading {
-        font-size: 1.02rem;
-        text-align: center;
-    }
-
-    .action-form-left-section {
-        width: 100%;
-        margin: 3rem;
-    }
-
-    .action-form-left-section-content {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .action-form-form {
-        margin-top: 10rem;
-    }
-
-    .action-form-container {
-        height: 100vh;
-    }
-}
 
 
 /*
@@ -498,42 +447,6 @@ Media queries
 =======================
  */
 
-@media (max-width: 650px) {
-    .section {
-        padding-left: 40px;
-        padding-right: 40px;
-    }
-    .decorated-title-1 {
-        text-align: center;
-    }
-    .decorated-title-1::after {
-        display: none;
-    }
-    .section-watermark-logo {
-        display: none;
-    }
-}
-
-@media (max-width: 1000px) {
-    .mission-vision-section {
-        flex-direction: column-reverse;
-    }
-
-    .mission-vision-right-section {
-        width: 100%;
-        height: 600px;
-        padding: 40px;
-    }
-
-    .mission-vision-left-section {
-        padding: 40px;
-        width: 100%;
-    }
-
-    .mission-content-container {
-        margin-top: 40px;
-    }
-}
 
 /*
 =======================
@@ -629,40 +542,6 @@ Footer
     color: var(--clr-active);
 }
 
-@media (max-width: 1500px) {
-    .footer-top-section {
-        gap: 100px;
-    }
-}
-
-@media (max-width: 1000px) {
-    .footer {
-        padding-left: 40px;
-        padding-right: 40px;
-    }
-
-    .footer-top-section {
-        flex-direction: column;
-    }
-
-    .footer-item {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .footer-short-bio {
-        text-align: center;
-    }
-
-    .footer-pages-link-item {
-        text-align: center;
-    }
-
-    .footer-bottom-section {
-        justify-content: center;
-    }
-}
 
 /*
 =======================
@@ -687,7 +566,6 @@ Action forms
 .action-form-input-x2 {
     grid-column: 1/-1;
 }
-
 
 /*
 =======================
@@ -908,12 +786,6 @@ Dashboard
 
 .edit-profile-container h3 {
     font-size: 1.4rem;
-}
-
-@media (max-width: 1500px) {
-    .home-auth-container-flex {
-        flex-direction: column;
-    }
 }
 
 /*
