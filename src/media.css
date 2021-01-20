@@ -15,6 +15,31 @@
     .footer-top-section {
         gap: 100px;
     }
+
+    .dashboard-center-text-right {
+        text-align: left;
+    }
+
+    .landing-page-url-mobile {
+        margin-bottom: 5rem;
+    }
+
+    .home-auth-right-section .background-logo-dashboard {
+        display: none;
+    }
+
+    .home-auth-right-section .core-leader-item {
+        display: none;
+    }
+
+    .home-auth-right-section {
+        display: none;
+    }
+
+    .home-auth-left-section {
+        padding: 20px;
+        padding-top: 60px;
+    }
 }
 
 /*
@@ -105,9 +130,9 @@ Action form media queries
         margin-top: 10rem;
     }
 
-    .action-form-container {
-        height: 100vh;
-    }
+    /*.action-form-container {*/
+    /*    height: 100vh;*/
+    /*}*/
 }
 
 
