@@ -12,6 +12,7 @@ const Modal = () => {
       open={modalState.isOpen}
       autoHideDuration={1000 * 5}
       onClose={hideModal}
+      anchorOrigin={{vertical: 'top', horizontal: 'center'}}
     >
       <MuiAlert
         onClose={hideModal}
