@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useContext} from 'react';
 import {demoUpcomingMeetings} from "../Content";
 import {
   Button,
@@ -9,24 +9,35 @@ import {
   Divider, IconButton,
 } from "@material-ui/core";
 import {ArrowDownwardRounded} from "@material-ui/icons";
+import {utilsContext} from "../context/UtilsContext";
 
 
 const UpcomingMeetings = () => {
-  const [meetings, setMeetings] = useState(demoUpcomingMeetings);
   const upcomingMeetingsRef = useRef(null);
+  const {upcomingMeetings, setUpcomingMeetings, setModalState} = useContext(utilsContext);
 
-  // useEffect(() => {
-  //   const t = setInterval(() => {
-  //     setMeetings(p => [...p, {
-  //       id: Date.now(),
-  //       name: 'Sem amet massa vel morbi at posuerevel morbi at posuere',
-  //       date: Date.now(),
-  //       platform: 'zoom',
-  //       link: 'https://exmple.com/meeting',
-  //     }])
-  //   }, 1000 * 10)
-  //   return () => clearInterval(t);
-  // }, [])
+  useEffect(() => {
+    const t = setInterval(() => {
+      const newMeeting = {
+        id: Date.now(),
+        name: `Sem amet massa vel morbi at ${Date.now()}`,
+        date: Date.now(),
+        platform: 'zoom',
+        link: 'https://exmple.com/meeting',
+      }
+
+      // add new meeting to current meetings list
+      setUpcomingMeetings(p => [...p, newMeeting])
+
+      // display dialog
+      setModalState({
+        isOpen: true,
+        severity: 'info',
+        content: 'Got a new meeting',
+      })
+    }, 1000 * 10)
+    return () => clearInterval(t);
+  }, [])
 
   const _handleScroll = () => {
     upcomingMeetingsRef.current?.scrollBy(0, 100);
@@ -37,7 +48,7 @@ const UpcomingMeetings = () => {
         <h3 className='dashboard-subheading'>Upcoming meetings</h3>
         <List className='upcoming-meetings-list' ref={upcomingMeetingsRef} style={{maxHeight: '40vh', overflow: 'auto'}}>
 
-          {meetings.map((meeting) => (
+          {upcomingMeetings.map((meeting) => (
             <div key={meeting.id}>
               <ListItem alignItems={'flex-start'} >
                 <ListItemText
