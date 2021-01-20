@@ -42,7 +42,7 @@ const CreateNewMeeting = () => {
       // Display modal
       setModalState({
         isOpen: true,
-        severity: 'info',
+        severity: 'success',
         content: 'New meeting successfully added',
       })
 
