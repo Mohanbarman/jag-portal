@@ -1,4 +1,5 @@
 import React, {createContext, useState} from 'react';
+import {demoUpcomingMeetings} from "../Content";
 
 
 const utilsContext = createContext();
@@ -11,6 +12,7 @@ const _defaultModalState = {
 
 const UtilsProvider = (props) => {
   const [modalState, setModalState] = useState(_defaultModalState)
+  const [upcomingMeetings, setUpcomingMeetings] = useState(demoUpcomingMeetings);
 
   const hideModal = () => {
     setModalState(_defaultModalState)
@@ -22,6 +24,8 @@ const UtilsProvider = (props) => {
         modalState,
         setModalState,
         hideModal,
+        upcomingMeetings,
+        setUpcomingMeetings,
       }} {...props}/>
   )
 }
