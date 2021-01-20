@@ -102,10 +102,17 @@ const Navbar = ({routes}) => {
             </ListItem>
           ))}
           {isAuthenticated && (
-            <ListItem button onClick={_handleLogout}>
-              <ListItemText className="text" primary="Logout"/>
-            </ListItem>
-          )}
+            <>
+              {screenWidth < 900 && (
+                <ListItem button onClick={() => history.push('/create-meeting')}>
+                  <ListItemText className="text" primary="Create new meeting"/>
+                </ListItem>
+              )}
+              <ListItem button onClick={_handleLogout}>
+                <ListItemText className="text" primary="Logout"/>
+              </ListItem>
+            </>
+            )}
         </List>
         <Divider />
       </Drawer>
