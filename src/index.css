@@ -431,6 +431,7 @@ Mission & vision
     height: 100%;
     width: 100%;
     object-fit: cover;
+    object-position: top;
 }
 
 .mission-content-container {
@@ -454,11 +455,8 @@ Prospecting videos
 =======================
  */
 
-.prospecting-videos-container {
+.section .prospecting-videos-container {
     margin-top: 100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 50px;
 }
 
 .prospecting-videos-item {
@@ -776,8 +774,9 @@ Dashboard
     width: 40vw;
 }
 
-.edit-profile-submit-btn {
+.edit-profile-fields-container .edit-profile-submit-btn {
     float: right;
+    margin-bottom: 2rem;
 }
 
 .edit-profile-change-password-container {
@@ -786,6 +785,7 @@ Dashboard
 
 .edit-profile-container h3 {
     font-size: 1.4rem;
+    margin-top: 3rem;
 }
 
 /*
@@ -812,4 +812,8 @@ Lead form
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
+}
+
+#file-picker-input {
+    display: none;
 }
