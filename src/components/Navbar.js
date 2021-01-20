@@ -13,12 +13,14 @@ import {
   ListItem,
   ListItemText,
 } from "@material-ui/core";
+import {utilsContext} from "../context/UtilsContext";
 
 
 const Navbar = ({routes}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const {isAuthenticated, setIsAuthenticated} = useContext(authContext);
+  const {isAuthenticated, setIsAuthenticated, setProfile} = useContext(authContext);
+  const { setModalState } = useContext(utilsContext);
 
   const history = useHistory();
   const classes = navStyles();
@@ -30,6 +32,21 @@ const Navbar = ({routes}) => {
   }, [])
 
   console.log(routes);
+
+  const _handleLogout = () => {
+    setIsAuthenticated(false);
+    setProfile(undefined);
+
+    // Display modal
+    setModalState({
+      isOpen: true,
+      severity: 'error',
+      content: 'Logged out successfully.'
+    })
+
+    // redirect to home page
+    history.push('/');
+  }
 
   // Desktop nav bar
   const desktopNav = (
@@ -56,10 +73,7 @@ const Navbar = ({routes}) => {
               className='btn-primary'
               variant='contained'
               color='primary'
-              onClick={() => {
-                setIsAuthenticated(false);
-                history.push('/');
-              }}
+              onClick={_handleLogout}
             >
               Logout
             </Button>
@@ -90,7 +104,7 @@ const Navbar = ({routes}) => {
             </ListItem>
           ))}
           {isAuthenticated && (
-            <ListItem button onClick={() => setIsAuthenticated(false)}>
+            <ListItem button onClick={_handleLogout}>
               <ListItemText className="text" primary="Logout"/>
             </ListItem>
           )}
