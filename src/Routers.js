@@ -1,3 +1,4 @@
+import React from "react";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import Home from "./routes/Home";
 import Contact from "./routes/Contact";
@@ -7,8 +8,8 @@ import Registration from "./routes/Registration";
 import ForgetPassword from "./routes/ForgetPassword";
 import EditProfile from "./routes/EditProfile";
 import LeadForm from "./routes/LeadForm";
-import React from "react";
 import Modal from "./Modal";
+import CreateNewMeetingMoblie from "./routes/CreateMeetingMobile";
 
 
 const Routers = () => {
@@ -38,6 +39,9 @@ const Routers = () => {
       </Route>
       <Route exact path="/lead-form">
         <LeadForm/>
+      </Route>
+      <Route exact path="/create-meeting">
+        <CreateNewMeetingMoblie/>
       </Route>
     </Router>
   )
