@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import YouTube from "react-youtube";
 import { demoTrainingVideos } from "../Content";
 import { IconButton } from "@material-ui/core";
@@ -18,7 +18,7 @@ const TrainingVideosCarousel = () => {
       naturalSlideHeight={50}
       naturalSlideWidth={100}
       totalSlides={demoTrainingVideos.length}
-      visibleSlides={2.1}
+      visibleSlides={1.1}
     >
       <Slider>
         {demoTrainingVideos.map((videoID, index) => (
