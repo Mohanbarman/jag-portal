@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
 import CoreLeaders from "../components/CoreLeaders";
@@ -37,6 +37,13 @@ const _unauthenticatedContent = (
 const AuthenticatedContent = () => {
   const { profile } = useContext(authContext);
   const { setModalState } = useContext(utilsContext);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setScreenWidth(window.innerWidth);
+    })
+  }, [])
 
   const _handleCopy = () => {
     const landingPageInput = document.getElementById('landing-page-input');
@@ -52,11 +59,35 @@ const AuthenticatedContent = () => {
     })
   }
 
+  const landingPageField = (
+    <>
+      <h4 className='dashboard-center-text-right'>Landing page</h4>
+      <Input
+        id='landing-page-input'
+        variant='standard'
+        className='landing-page-url-input'
+        value={profile.landingPageUrl}
+        endAdornment={
+          <InputAdornment position={'end'}>
+            <IconButton onClick={_handleCopy}>
+              <FileCopyIcon/>
+            </IconButton>
+          </InputAdornment>
+        }
+      />
+    </>
+  )
+
   return (
     <>
       <Navbar routes={authenticatedRoutes}/>
       <div className='home-auth-container-flex'>
         <section className='home-auth-left-section'>
+          {screenWidth < 900 && (
+            <div className='landing-page-url-mobile'>
+              {landingPageField}
+            </div>
+          )}
           <UpcomingMeetings />
           <TrainingVideos />
         </section>
@@ -69,20 +100,7 @@ const AuthenticatedContent = () => {
             />
           </div>
           <div className='landing-page-url-container'>
-            <h4 className='dashboard-center-text-right'>Landing page</h4>
-            <Input
-              id='landing-page-input'
-              variant='standard'
-              className='landing-page-url-input'
-              value={profile.landingPageUrl}
-              endAdornment={
-                <InputAdornment position={'end'}>
-                  <IconButton onClick={_handleCopy}>
-                    <FileCopyIcon/>
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
+            {landingPageField}
           </div>
           {profile?.isAdmin && (
             <div className='create-new-meeting-container-right-bar'>
