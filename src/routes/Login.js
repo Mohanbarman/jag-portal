@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {loginScreenContent} from "../Content";
+import {demoProfile, loginScreenContent} from "../Content";
 import {Button, TextField} from '@material-ui/core';
 import {ArrowForwardIos} from "@material-ui/icons";
 import ActionFormContainer from "../components/ActionFormContainer";
@@ -12,7 +12,7 @@ import {utilsContext} from "../context/UtilsContext";
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {setIsAuthenticated} = useContext(authContext);
+  const {setIsAuthenticated, setProfile} = useContext(authContext);
   const {setModalState} = useContext(utilsContext);
   const history = useHistory();
 
@@ -27,17 +27,16 @@ const Login = () => {
       })
 
       setIsAuthenticated(true);
+      setProfile(demoProfile);
       history.push('/');
       return 0;
     }
 
-    if (!validateEmail(email)) {
-      setModalState({
-        isOpen: true,
-        content: 'Please enter a valid email and password',
-        severity: 'error',
-      })
-    }
+    setModalState({
+      isOpen: true,
+      content:  'Password and email is required',
+      severity: 'error',
+    })
   }
 
   return (
@@ -63,6 +62,8 @@ const Login = () => {
           label='Password'
           className='action-form-input'
           type='password'
+          error={password.length < 1}
+          helperText={password.length < 1 ? 'Please provide a password' : ''}
         />
 
         <div className='submit-btn-container'>
