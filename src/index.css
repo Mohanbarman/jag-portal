@@ -36,7 +36,7 @@ Variables
     --clr-primary-3: #1B150C;
     --clr-primary-4: #191209;
     --clr-primary-5: #150F06;
-    --clr-primary-6: #2F261A;
+    --clr-primary-6: #2f261a;
     --clr-primary-7: #080501;
     --clr-primary-8: #150F06;
 
@@ -230,13 +230,13 @@ Nav bar
 
 .nav-wrapper ul {
     display: flex;
+    gap: 3rem;
 }
 
 .nav-wrapper ul li {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2rem;
 }
 
 .nav-wrapper a {

@@ -6,18 +6,38 @@ import ActionFormContainer from "../components/ActionFormContainer";
 import {Link, useHistory} from 'react-router-dom';
 import {validateEmail} from "../Utils";
 import {authContext} from "../context/AuthContext";
+import {utilsContext} from "../context/UtilsContext";
 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const {setIsAuthenticated} = useContext(authContext);
+  const {setModalState} = useContext(utilsContext);
   const history = useHistory();
 
   const _handleSubmit = (e) => {
     e?.preventDefault();
-    setIsAuthenticated(true);
-    history.push('/');
+
+    if (validateEmail(email) && password) {
+      setModalState({
+        isOpen: true,
+        content: `Logged in successfully as ${email}`,
+        severity: 'success',
+      })
+
+      setIsAuthenticated(true);
+      history.push('/');
+      return 0;
+    }
+
+    if (!validateEmail(email)) {
+      setModalState({
+        isOpen: true,
+        content: 'Please enter a valid email and password',
+        severity: 'error',
+      })
+    }
   }
 
   return (
@@ -42,6 +62,7 @@ const Login = () => {
           color='primary'
           label='Password'
           className='action-form-input'
+          type='password'
         />
 
         <div className='submit-btn-container'>
