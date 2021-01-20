@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {demoPlatforms} from "../Content";
@@ -16,20 +16,40 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import {utilsContext} from "../context/UtilsContext";
 
 
 const CreateNewMeeting = () => {
   const [meetingName, setMeetingName] = useState('');
-  const [platform, setPlatform] = useState(new Date(Date.now()));
+  const [platform, setPlatform] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const [link, setLink] = useState('');
+  const {setUpcomingMeetings, setModalState} = useContext(utilsContext);
 
   const _handleSubmit = () => {
     if (meetingName && platform && selectedDate && link) {
-      console.log('Meeting name : ', meetingName);
-      console.log('Platform : ', platform);
-      console.log('Selected date : ', selectedDate);
-      console.log('Link : ', link);
+      const meeting = {
+          id: Date.now(),
+          name: meetingName,
+          date: selectedDate,
+          platform: platform,
+          link: link,
+      }
+
+      // append meeting to current meetings list
+      setUpcomingMeetings(p => [ ...p, meeting])
+
+      // Display modal
+      setModalState({
+        isOpen: true,
+        severity: 'info',
+        content: 'New meeting successfully added',
+      })
+
+      // Clear all fields
+      setMeetingName('');
+      setPlatform('');
+      setLink('');
     }
   }
 
