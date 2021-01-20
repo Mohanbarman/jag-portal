@@ -31,8 +31,6 @@ const Navbar = ({routes}) => {
     });
   }, [])
 
-  console.log(routes);
-
   const _handleLogout = () => {
     setIsAuthenticated(false);
     setProfile(undefined);
@@ -41,7 +39,7 @@ const Navbar = ({routes}) => {
     setModalState({
       isOpen: true,
       severity: 'error',
-      content: 'Logged out successfully.'
+      content: 'Logged out.'
     })
 
     // redirect to home page
