@@ -18,6 +18,7 @@ import {
   authenticatedRoutes,
   unauthenticatedRoutes,
 } from "../Routes";
+import {utilsContext} from "../context/UtilsContext";
 
 
 // Content for unauthenticated users
@@ -35,6 +36,7 @@ const _unauthenticatedContent = (
 // Content for authenticated users
 const AuthenticatedContent = () => {
   const { profile } = useContext(authContext);
+  const { setModalState } = useContext(utilsContext);
 
   const _handleCopy = () => {
     const landingPageInput = document.getElementById('landing-page-input');
@@ -42,6 +44,12 @@ const AuthenticatedContent = () => {
     landingPageInput.select();
     landingPageInput.setSelectionRange(0, 99999); /* For mobile devices */
     document.execCommand('copy');
+
+    setModalState({
+      isOpen: true,
+      content: 'Successfully copied to clipboard',
+      severity: 'success',
+    })
   }
 
   return (
