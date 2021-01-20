@@ -7,7 +7,7 @@
     body { font-size: 1rem; }
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 900px) {
     .home-auth-container-flex {
         flex-direction: column;
     }
@@ -73,6 +73,10 @@ Action form media queries
     .footer-bottom-section {
         justify-content: center;
     }
+
+    .edit-profile-input-group {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 900px) {
@@ -127,5 +131,16 @@ Action form media queries
 @media (max-width: 700px) {
     .form-grid {
         grid-template-columns: 1fr;
+    }
+
+    .edit-profile-fields-container {
+        width: 100%;
+        padding: 2rem 5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .edit-profile-fields-container {
+        padding: 2rem;
     }
 }
