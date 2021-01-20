@@ -5,6 +5,7 @@ import RoundedImageContainer from "../components/RoundedImageContainer";
 import {Button, TextField} from "@material-ui/core";
 import {authenticatedRoutes} from "../Routes";
 import {utilsContext} from "../context/UtilsContext";
+import {validateEmail} from "../Utils";
 
 
 const EditProfile = () => {
@@ -45,14 +46,17 @@ const EditProfile = () => {
   }
 
   const _handleImageUploadClick = (event) => {
+    // File uri
     const file = event.target.files[0];
     const reader = new FileReader();
 
+    // Callback event will run everytime reader is used to read file
     reader.onload = (e) => {
       setProfileImage(e.target.result);
       console.log(e);
     }
 
+    // Read file
     reader.readAsDataURL(file);
   }
 
@@ -89,6 +93,8 @@ const EditProfile = () => {
                 value={firstName}
                 onChange={i => setFirstName(i.target.value)}
                 variant='standard'
+                error={firstName.length < 1}
+                helperText={firstName.length < 1 ? 'First name is required' : ''}
               />
               <TextField
                 label='Last name'
@@ -101,27 +107,29 @@ const EditProfile = () => {
                 value={email}
                 onChange={i => setEmail(i.target.value)}
                 variant='standard'
+                error={!validateEmail(email)}
+                helperText={validateEmail(email) ? '' : 'Please enter a valid email'}
               />
             </div>
           </div>
-          <div className='edit-profile-change-password-container'>
-            <h3>Change password</h3>
-            <div className='edit-profile-input-group'>
-              <TextField
-                label='Current password'
-                variant='standard'
-                value={currentPassword}
-                type='password'
-                onChange={i => setCurrentPassword(i.target.value)}
-              />
-              <TextField
-                label='New password'
-                variant='standard'
-                value={newPassword}
-                type='password'
-                onChange={i => setNewPassword(i.target.value)}
-              />
-            </div>
+          {/*<div className='edit-profile-change-password-container'>*/}
+          {/*  <h3>Change password</h3>*/}
+          {/*  <div className='edit-profile-input-group'>*/}
+          {/*    <TextField*/}
+          {/*      label='Current password'*/}
+          {/*      variant='standard'*/}
+          {/*      value={currentPassword}*/}
+          {/*      type='password'*/}
+          {/*      onChange={i => setCurrentPassword(i.target.value)}*/}
+          {/*    />*/}
+          {/*    <TextField*/}
+          {/*      label='New password'*/}
+          {/*      variant='standard'*/}
+          {/*      value={newPassword}*/}
+          {/*      type='password'*/}
+          {/*      onChange={i => setNewPassword(i.target.value)}*/}
+          {/*    />*/}
+          {/*  </div>*/}
             <Button
               variant='contained'
               color='primary'
@@ -130,7 +138,7 @@ const EditProfile = () => {
             >
               Save
             </Button>
-          </div>
+          {/*</div>*/}
         </div>
       </div>
     </>
