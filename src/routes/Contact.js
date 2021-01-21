@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import ActionFormContainer from "../components/ActionFormContainer";
 import { contactUsScreenContent } from "../Content";
 import { TextField, Button } from "@material-ui/core";
 import {validateEmail} from "../Utils";
 import {ArrowForwardIos} from "@material-ui/icons";
+import Navbar from "../components/Navbar";
+import {authContext} from "../context/AuthContext";
+import {authenticatedRoutes, unauthenticatedRoutes} from "../Routes";
 
 
 const Contact = () => {
   const {heading, subheading, image} = contactUsScreenContent;
+  const {isAuthenticated} = useContext(authContext);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -18,7 +22,8 @@ const Contact = () => {
     e.preventDefault();
   }
 
-  return(
+  return(<>
+      <Navbar routes={isAuthenticated ? authenticatedRoutes : unauthenticatedRoutes}/>
     <ActionFormContainer heading={heading} subheading={subheading} image={image}>
       <form className='action-form-form'>
         <div className='contact-us-form-grid form-grid'>
@@ -71,6 +76,7 @@ const Contact = () => {
         >Send</Button>
       </form>
     </ActionFormContainer>
+    </>
   );
 }
 
