@@ -8,9 +8,9 @@
 }
 
 @media (max-width: 900px) {
-    .home-auth-container-flex {
-        flex-direction: column;
-    }
+    /*.home-auth-container-flex {*/
+    /*    flex-direction: column;*/
+    /*}*/
 
     .footer-top-section {
         gap: 100px;
@@ -39,6 +39,17 @@
     .home-auth-left-section {
         padding: 20px;
         padding-top: 60px;
+        width: 100%;
+    }
+
+    .swiper-slide {
+        height: 27vw;
+    }
+}
+
+@media (max-width: 680px) {
+    .swiper-slide {
+        height: 50vw;
     }
 }
 
@@ -102,6 +113,10 @@ Action form media queries
     .edit-profile-input-group {
         grid-template-columns: 1fr;
     }
+
+    .lead-form-input-container {
+        padding: 40px;
+    }
 }
 
 @media (max-width: 900px) {
@@ -127,7 +142,7 @@ Action form media queries
     }
 
     .action-form-form {
-        margin-top: 10rem;
+        margin-top: 4rem;
     }
 
     /*.action-form-container {*/
@@ -149,6 +164,9 @@ Action form media queries
     }
     .section-watermark-logo {
         display: none;
+    }
+    .lead-form-fields-wrapper {
+        grid-template-columns: 1fr;
     }
 }
 
