@@ -23,6 +23,10 @@ export const unauthenticatedRoutes = [
 
 export const authenticatedRoutes = [
   {
+    label: 'Home',
+    path: '/',
+  },
+  {
     label: 'Dashboard',
     path: '/',
   },
