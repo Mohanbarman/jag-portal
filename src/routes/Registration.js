@@ -12,6 +12,7 @@ const Registration = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [managerId, setManagerId] = useState('');
 
   const {heading, subheading, image} = registrationScreenContent;
 
@@ -42,8 +43,16 @@ const Registration = () => {
 
           <TextField
             color='primary'
+            label='Manager id'
+            className='action-form-input'
+            value={managerId}
+            onChange={e => setManagerId(e.target.value)}
+          />
+
+          <TextField
+            color='primary'
             label='Email'
-            className='action-form-input action-form-input-x2'
+            className='action-form-input'
             value={email}
             onChange={e => setEmail(e.target.value)}
             error={!validateEmail(email)}
