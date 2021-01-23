@@ -104,6 +104,11 @@ p {
     line-height: 1.9rem;
 }
 
+.circular-progress {
+    position: relative;
+    left: 50%;
+}
+
 .section {
     padding: 100px;
     position: relative;
@@ -862,3 +867,4 @@ Carousel
     background-color: var(--clr-primary-7);
     border-radius: 50%;
 }
+
