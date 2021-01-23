@@ -10,6 +10,7 @@ import EditProfile from "./routes/EditProfile";
 import LeadForm from "./routes/LeadForm";
 import Modal from "./Modal";
 import CreateNewMeetingMoblie from "./routes/CreateMeetingMobile";
+import Dashboard from "./routes/Dashboard";
 
 
 const Routers = () => {
@@ -42,6 +43,9 @@ const Routers = () => {
       </Route>
       <Route exact path="/create-meeting">
         <CreateNewMeetingMoblie/>
+      </Route>
+      <Route exact path="/dashboard">
+        <Dashboard/>
       </Route>
     </Router>
   )
