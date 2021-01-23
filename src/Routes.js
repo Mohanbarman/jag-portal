@@ -28,7 +28,7 @@ export const authenticatedRoutes = [
   },
   {
     label: 'Dashboard',
-    path: '/',
+    path: '/dashboard',
   },
   {
     label: 'Contact',
