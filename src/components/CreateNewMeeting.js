@@ -9,14 +9,17 @@ import {
   MenuItem,
   Button,
   FormControl,
-  InputLabel,
+  InputLabel, FormHelperText,
 } from "@material-ui/core";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
-import {utilsContext} from "../context/UtilsContext";
+import {SEVERITY, utilsContext} from "../context/UtilsContext";
+import {CREATE_MEETING} from "../graphql/meetingSchemas";
+import {useMutation} from "@apollo/client";
+import {validateUrl} from "../Utils";
 
 
 const CreateNewMeeting = () => {
@@ -24,32 +27,41 @@ const CreateNewMeeting = () => {
   const [platform, setPlatform] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const [link, setLink] = useState('');
-  const {setUpcomingMeetings, setModalState} = useContext(utilsContext);
+  const {setUpcomingMeetings, displayModal} = useContext(utilsContext);
+  const [createMeeting] = useMutation(CREATE_MEETING);
 
-  const _handleSubmit = () => {
-    if (meetingName && platform && selectedDate && link) {
+
+  const _handleSubmit = async () => {
+    if (!meetingName && !platform && !validateUrl(link)) {
+      displayModal('Form contains error', SEVERITY.ERROR);
+      return 0;
+    }
+
+    if (selectedDate < new Date(Date.now())) {
+      displayModal('Meeting can\'t be scheduled for past', SEVERITY.ERROR);
+      return 0;
+    }
+
+    try {
       const meeting = {
-          id: Date.now(),
-          name: meetingName,
-          date: selectedDate,
-          platform: platform,
-          link: link,
+        title: meetingName,
+        scheduledTime: selectedDate,
+        platform: platform,
+        link: link,
       }
+      const res = await createMeeting({ variables: meeting});
 
-      // append meeting to current meetings list
-      setUpcomingMeetings(p => [ ...p, meeting])
-
-      // Display modal
-      setModalState({
-        isOpen: true,
-        severity: 'success',
-        content: 'New meeting successfully added',
-      })
+      setUpcomingMeetings(p => [ res?.data?.createMeeting, ...p]) // Appending created meeting to the meetings array
+      displayModal('Meeting created successfully', SEVERITY.SUCCESS);
 
       // Clear all fields
       setMeetingName('');
       setPlatform('');
       setLink('');
+
+    } catch (e) {
+      console.log(e.message);
+      displayModal(e.message, SEVERITY.ERROR);
     }
   }
 
@@ -62,20 +74,28 @@ const CreateNewMeeting = () => {
         onChange={i => setMeetingName(i.target.value)}
         variant='standard'
         className='create-new-meeting-input-x3'
+        error={meetingName.length < 1}
+        helperText={meetingName.length < 1 ? 'Meeting name should\'t be empty' : ''}
       />
 
       <FormControl>
-        <InputLabel id="select-platform-input-label">Platform</InputLabel>
+        <InputLabel id="select-platform-input-label" error={platform.length < 1}>Platform</InputLabel>
         <Select
           labelId="select-platform-input-label"
           value={platform}
           onChange={i => setPlatform(i.target.value)}
           placeholder='Select platform'
+          error={platform.length < 1}
         >
           {demoPlatforms.map(i => (
             <MenuItem value={i}>{i}</MenuItem>
           ))}
         </Select>
+        {platform.length < 1 && (
+          <FormHelperText error={platform.length < 1}>
+            Please select a platform
+          </FormHelperText>
+        )}
       </FormControl>
 
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -107,6 +127,8 @@ const CreateNewMeeting = () => {
         onChange={i => setLink(i.target.value)}
         variant='standard'
         className='create-new-meeting-input'
+        error={!validateUrl(link)}
+        helperText={!validateUrl(link) ? 'Please enter a valid url' : ''}
       />
 
       <Button
