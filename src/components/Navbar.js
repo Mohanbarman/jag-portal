@@ -13,14 +13,14 @@ import {
   ListItem,
   ListItemText,
 } from "@material-ui/core";
-import {utilsContext} from "../context/UtilsContext";
+import {SEVERITY, utilsContext} from "../context/UtilsContext";
 
 
 const Navbar = ({routes}) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const {isAuthenticated, setIsAuthenticated, setProfile} = useContext(authContext);
-  const { setModalState } = useContext(utilsContext);
+  const {isAuthenticated, setIsAuthenticated, setProfile, logout} = useContext(authContext);
+  const { displayModal } = useContext(utilsContext);
 
   const history = useHistory();
   const classes = navStyles();
@@ -31,16 +31,16 @@ const Navbar = ({routes}) => {
     });
   }, [])
 
-  const _handleLogout = () => {
-    setIsAuthenticated(false);
-    setProfile(undefined);
-
-    // Display modal
-    setModalState({
-      isOpen: true,
-      severity: 'error',
-      content: 'Logged out.'
-    })
+  const _handleLogout = async () => {
+    try {
+      await logout();
+      setIsAuthenticated(false);
+      setProfile(undefined);
+      localStorage.clear();
+      displayModal('Logged out.', SEVERITY.SUCCESS);
+    } catch (e) {
+      displayModal(e?.message, SEVERITY.ERROR);
+    }
 
     // redirect to home page
     history.push('/');
