@@ -1,5 +1,5 @@
 // Graphql for authentication
-import {gql} from "@apollo/client";
+import { gql } from "@apollo/client";
 
 const LOGIN = gql`
     mutation LOGIN($email: String!, $password: String!) {
@@ -65,10 +65,17 @@ const REGISTER_USER = gql`
     }
 `
 
+const RESET_PASS = gql`
+    mutation RESET_PASS($email:String!, $otp:Int, $password:String) {
+        resetPass(email:$email, otp:$otp, password:$password)
+    }
+`
+
 export {
     LOGIN,
     LOGOUT,
     CURRENT_USER,
     EDIT_USER,
-    REGISTER_USER
+    REGISTER_USER,
+    RESET_PASS,
 };
