@@ -45,5 +45,30 @@ const EDIT_USER = gql`
         }
     }
 `
+const REGISTER_USER = gql`
+    mutation REGISTER_USER($firstName:String!, $lastName:String, $email:String!, $password:String!, $empId:String!) {
+        registerUser(input: {
+            firstName: $firstName,
+            lastName: $lastName,
+            email: $email,
+            password: $password,
+            empId: $empId,
+        }) {
+            _id,
+            firstName,
+            lastName,
+            email,
+            username,
+            role,
+            profilePic,
+        }
+    }
+`
 
-export {LOGIN, LOGOUT, CURRENT_USER, EDIT_USER};
+export {
+    LOGIN,
+    LOGOUT,
+    CURRENT_USER,
+    EDIT_USER,
+    REGISTER_USER
+};

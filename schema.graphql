@@ -176,9 +176,10 @@ input UserInput {
     dob: String
     email: String!
     empId: String
+    firstName: String!
     gender: String
+    lastName: String
     manager: String
-    name: String!
     password: String!
     phone: String
     profilePic: String
