@@ -64,10 +64,32 @@ const REGISTER_USER = gql`
         }
     }
 `
-
 const RESET_PASS = gql`
     mutation RESET_PASS($email:String!, $otp:Int, $password:String) {
         resetPass(email:$email, otp:$otp, password:$password)
+    }
+`
+const LEADS = gql`
+    query LEADS($page:Int, $limit:Int, $orderBy:String) {
+        leads(page:$page, limit:$limit, orderBy:$orderBy) {
+            totalPages
+            totalDocs
+            page
+            hasNextPage
+            hasPrevPage
+            prevPage
+            nextPage
+            docs {
+                _id
+                firstName
+                lastName
+                email
+                phone
+                city
+                state
+                createdAt
+            }
+        }
     }
 `
 
@@ -78,4 +100,5 @@ export {
     EDIT_USER,
     REGISTER_USER,
     RESET_PASS,
+    LEADS,
 };
