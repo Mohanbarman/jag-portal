@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Contact from "./routes/Contact";
 import About from "./routes/About";
@@ -11,41 +11,45 @@ import LeadForm from "./routes/LeadForm";
 import Modal from "./Modal";
 import CreateNewMeetingMoblie from "./routes/CreateMeetingMobile";
 import Dashboard from "./routes/Dashboard";
+import Leads from "./routes/Leads";
 
 
 const Routers = () => {
   return (
     <Router>
-      <Modal/>
+      <Modal />
       <Route exact path="/">
-        <Home/>
+        <Home />
       </Route>
       <Route exact path="/contact">
-        <Contact/>
+        <Contact />
       </Route>
       <Route exact path="/about">
-        <About/>
+        <About />
       </Route>
       <Route exact path="/login">
-        <Login/>
+        <Login />
       </Route>
       <Route exact path="/registration">
-        <Registration/>
+        <Registration />
       </Route>
       <Route exact path="/forget-password">
-        <ForgetPassword/>
+        <ForgetPassword />
       </Route>
       <Route exact path="/edit-profile">
-        <EditProfile/>
+        <EditProfile />
       </Route>
       <Route exact path="/lead-form">
-        <LeadForm/>
+        <LeadForm />
       </Route>
       <Route exact path="/create-meeting">
-        <CreateNewMeetingMoblie/>
+        <CreateNewMeetingMoblie />
       </Route>
       <Route exact path="/dashboard">
-        <Dashboard/>
+        <Dashboard />
+      </Route>
+      <Route exact path="/leads">
+        <Leads />
       </Route>
     </Router>
   )

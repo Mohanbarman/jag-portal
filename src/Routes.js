@@ -41,7 +41,11 @@ export const authenticatedRoutes = [
   {
     label: 'Edit profile',
     path: '/edit-profile'
-  }
+  },
+  {
+    label: 'Leads',
+    path: '/leads'
+  },
 ]
 
 export const adminAdditionalRoutes = [
