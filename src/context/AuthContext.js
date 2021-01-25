@@ -13,7 +13,8 @@ const AuthProvider = (props) => {
   const currentUser = useQuery(CURRENT_USER);
 
   useEffect(() => {
-    let p = localStorage.getItem("profile");
+    let p = localStorage.profile;
+    console.log(p);
     if (p) {
       setProfile(JSON.parse(p));
       setIsAuthenticated(true);
@@ -23,11 +24,10 @@ const AuthProvider = (props) => {
   }, [])
 
   useEffect(() => {
-    if (!currentUser.loading && isAuthenticated) {
-      localStorage['profile'] = JSON.stringify(currentUser.data?.currentUser);
-      setProfile(currentUser.data?.currentUser);
-    }
-  }, [currentUser, isAuthenticated])
+    // localStorage['profile'] = JSON.stringify(currentUser.data?.currentUser);
+    // setProfile(currentUser.data?.currentUser);
+    console.log(currentUser.data?.currentUser);
+  }, [])
 
   return <authContext.Provider value={{
     isAuthenticated,

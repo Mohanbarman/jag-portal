@@ -8,6 +8,8 @@ import {SEVERITY, utilsContext} from "../context/UtilsContext";
 import {EDIT_USER} from "../graphql/profileSchemas";
 import {useMutation} from "@apollo/client";
 import PlaceholderProfilePic from "../assets/placeholder-profile.png";
+import {storage} from "../services/FirebaseStorage";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 
 const EditProfile = () => {
@@ -20,6 +22,10 @@ const EditProfile = () => {
   // const [currentPassword, setCurrentPassword] = useState('');
   // const [newPassword, setNewPassword] = useState('');
   const [editUser] = useMutation(EDIT_USER);
+
+  // For upload indicator
+  const [progress, setProgress] = useState(0);
+  const [isUploading, setIsUploading] = useState(false)
 
   useEffect(() => {
     if (profile) {
@@ -36,6 +42,7 @@ const EditProfile = () => {
     }
 
     try {
+      console.log(firstName, lastName);
       const res = await editUser({
         variables: {
           firstName: firstName,
@@ -44,11 +51,11 @@ const EditProfile = () => {
         }
       });
 
+      console.log(res.data?.editUser);
       setProfile(res.data?.editUser);
       localStorage['profile'] = JSON.stringify(res.data?.editUser)
 
       displayModal('Profile updated successfully', SEVERITY.SUCCESS);
-
     } catch (e) {
       displayModal(e.message, SEVERITY.ERROR);
     }
@@ -58,21 +65,38 @@ const EditProfile = () => {
   const _handleImageUploadClick = (event) => {
     // File uri
     const file = event.target.files[0];
-    const reader = new FileReader();
 
-    // Callback event will run everytime reader is used to read file
-    reader.onload = (e) => {
-      setProfileImage(e.target.result);
-      console.log(e);
-    }
+    // Create a upload task on firebase storage
+    const uploadTask = storage.ref(`/profiles/${file.name}`).put(file)
 
-    // Read file
-    reader.readAsDataURL(file);
+    // Will run everytime state of file upload is changed
+    uploadTask.on('state_changed',
+      (snapShot) => {
+        setIsUploading(true);
+        setProgress(Math.floor((snapShot.bytesTransferred / snapShot.totalBytes) * 100))
+      },
+
+      (err) => {
+        displayModal('Failed to upload kindly check your internet connection', SEVERITY.SUCCESS)
+        console.log(err);
+      },
+
+      () => {
+        setProgress(0);
+        setIsUploading(false);
+        storage.ref('profiles').child(file.name).getDownloadURL()
+          .then(url => {
+            console.log('Download url : ', url);
+            setProfileImage(url);
+            displayModal('Image uploaded successfully', SEVERITY.SUCCESS);
+          })
+      });
   }
 
   return (
     <>
       <Navbar routes={authenticatedRoutes}/>
+      {isUploading && <LinearProgress variant='determinate' value={progress} color='primary'/>}
       <div className='edit-profile-container'>
         <h3>Edit Profile</h3>
         <div className='edit-profile-image-container'>
@@ -89,7 +113,9 @@ const EditProfile = () => {
             component='label'
             htmlFor='file-picker-input'
             variant='contained'
-            color='primary'>
+            color='primary'
+            disabled={isUploading}
+          >
             Select image
           </Button>
 
@@ -153,6 +179,6 @@ const EditProfile = () => {
       </div>
     </>
   )
-}
+};
 
 export default EditProfile;
