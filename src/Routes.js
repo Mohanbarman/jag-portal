@@ -4,16 +4,16 @@ export const unauthenticatedRoutes = [
     path: '/',
   },
   {
-    label: 'Contact',
-    path: '/contact',
-  },
-  {
     label: 'About',
     path: '/about'
   },
   {
     label: 'Registration',
     path: '/registration',
+  },
+  {
+    label: 'Contact',
+    path: '/contact',
   },
   {
     label: 'Login',
@@ -23,28 +23,28 @@ export const unauthenticatedRoutes = [
 
 export const authenticatedRoutes = [
   {
-    label: 'Home',
-    path: '/',
-  },
-  {
     label: 'Dashboard',
     path: '/dashboard',
   },
   {
-    label: 'Contact',
-    path: '/contact',
+    label: 'Home',
+    path: '/',
   },
   {
-    label: 'About us',
-    path: '/about'
+    label: 'Leads',
+    path: '/leads'
   },
   {
     label: 'Edit profile',
     path: '/edit-profile'
   },
   {
-    label: 'Leads',
-    path: '/leads'
+    label: 'About us',
+    path: '/about'
+  },
+  {
+    label: 'Contact',
+    path: '/contact',
   },
 ]
 
@@ -61,11 +61,11 @@ export const landingPageRoutes = [
     path: '/',
   },
   {
+    label: 'About us',
+    path: '/about'
+  },
+  {
     label: 'Contact',
     path: '/contact'
   },
-  {
-    label: 'About us',
-    path: '/about'
-  }
 ]
