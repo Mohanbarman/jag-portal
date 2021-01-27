@@ -30,10 +30,13 @@ const CreateNewMeeting = () => {
   const {setUpcomingMeetings, displayModal} = useContext(utilsContext);
   const [createMeeting] = useMutation(CREATE_MEETING);
 
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
 
   const _handleSubmit = async () => {
-    if (!meetingName && !platform && !validateUrl(link)) {
-      displayModal('Form contains error', SEVERITY.ERROR);
+    setIsSubmitClicked(true);
+
+    if (meetingName.length < 1 && platform.length < 1 && !validateUrl(link)) {
+      displayModal('Fields contains errors', SEVERITY.ERROR);
       return 0;
     }
 
@@ -41,6 +44,12 @@ const CreateNewMeeting = () => {
       displayModal('Meeting can\'t be scheduled for past', SEVERITY.ERROR);
       return 0;
     }
+
+    if (!meetingName && !platform && !validateUrl(link)) {
+      displayModal('Form contains error', SEVERITY.ERROR);
+      return 0;
+    }
+
 
     try {
       const meeting = {
@@ -74,25 +83,25 @@ const CreateNewMeeting = () => {
         onChange={i => setMeetingName(i.target.value)}
         variant='standard'
         className='create-new-meeting-input-x3'
-        error={meetingName.length < 1}
-        helperText={meetingName.length < 1 ? 'Meeting name should\'t be empty' : ''}
+        error={meetingName.length < 1 && isSubmitClicked}
+        helperText={meetingName.length < 1 && isSubmitClicked ? 'Meeting name should\'t be empty' : ''}
       />
 
       <FormControl>
-        <InputLabel id="select-platform-input-label" error={platform.length < 1}>Platform</InputLabel>
+        <InputLabel id="select-platform-input-label" error={platform.length < 1 && isSubmitClicked}>Platform</InputLabel>
         <Select
           labelId="select-platform-input-label"
           value={platform}
           onChange={i => setPlatform(i.target.value)}
           placeholder='Select platform'
-          error={platform.length < 1}
+          error={platform.length < 1 && isSubmitClicked}
         >
           {demoPlatforms.map(i => (
             <MenuItem value={i}>{i}</MenuItem>
           ))}
         </Select>
-        {platform.length < 1 && (
-          <FormHelperText error={platform.length < 1}>
+        {platform.length < 1 && isSubmitClicked && (
+          <FormHelperText error={platform.length < 1 && isSubmitClicked}>
             Please select a platform
           </FormHelperText>
         )}
@@ -105,6 +114,7 @@ const CreateNewMeeting = () => {
           label="Date"
           value={selectedDate}
           onChange={setSelectedDate}
+          onChangeRaw={(e) => e.preventDefault()}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
@@ -115,6 +125,7 @@ const CreateNewMeeting = () => {
           label="Time"
           value={selectedDate}
           onChange={setSelectedDate}
+          onChangeRaw={(e) => e.preventDefault()}
           KeyboardButtonProps={{
             'aria-label': 'change time',
           }}
@@ -127,8 +138,8 @@ const CreateNewMeeting = () => {
         onChange={i => setLink(i.target.value)}
         variant='standard'
         className='create-new-meeting-input'
-        error={!validateUrl(link)}
-        helperText={!validateUrl(link) ? 'Please enter a valid url' : ''}
+        error={!validateUrl(link) && isSubmitClicked}
+        helperText={!validateUrl(link) && isSubmitClicked ? 'Please enter a valid url' : ''}
       />
 
       <Button
