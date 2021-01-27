@@ -44,7 +44,7 @@ const Leads = () => {
       setPage(Number(data?.leads?.page));
       setCount(Number(data?.leads?.totalDocs));
     }
-  }, [data, error, displayModal])
+  }, [data])
 
   const handleChangePage = (event, newPage) => {
     fetchLeads({ variables: { limit: rowsPerPage, page: newPage + 1} });

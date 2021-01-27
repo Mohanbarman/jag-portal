@@ -1,5 +1,5 @@
 @media screen and (min-width: 800px) {
-    h1 { font-size: 4rem; }
+    h1 { font-size: 3rem; }
     h2 { font-size: 2.5rem; }
     h3 { font-size: 1.75rem; }
     h4 { font-size: 1rem; }
@@ -8,10 +8,6 @@
 }
 
 @media (max-width: 900px) {
-    /*.home-auth-container-flex {*/
-    /*    flex-direction: column;*/
-    /*}*/
-
     .footer-top-section {
         gap: 100px;
     }
@@ -45,6 +41,15 @@
     .swiper-slide {
         height: 27vw;
     }
+
+    .section {
+        padding: 40px;
+    }
+
+    .core-leaders-container {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        margin-top: 30px;
+    }
 }
 
 @media (max-width: 680px) {
@@ -71,7 +76,7 @@ Action form media queries
     .mission-vision-right-section {
         width: 100%;
         height: 600px;
-        padding: 40px;
+        padding: 0;
     }
 
     .mission-vision-left-section {
@@ -185,5 +190,19 @@ Action form media queries
 @media (max-width: 400px) {
     .edit-profile-fields-container {
         padding: 2rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .footer-top-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-item:nth-child(1) {
+        grid-column: 1/-1;
+    }
+
+    .footer-item {
+        align-items: center;
     }
 }
