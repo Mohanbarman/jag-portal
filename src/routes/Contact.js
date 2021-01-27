@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import ActionFormContainer from "../components/ActionFormContainer";
 import { contactUsScreenContent } from "../Content";
-import { TextField, Button, LinearProgress } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import { validateEmail } from "../Utils";
 import { ArrowForwardIos } from "@material-ui/icons";
 import Navbar from "../components/Navbar";
@@ -17,16 +17,23 @@ const Contact = () => {
 
   const { heading, subheading, image } = contactUsScreenContent;
   const { isAuthenticated } = useContext(authContext);
-  const { displayModal } = useContext(utilsContext);
-  const [isLoading, setIsLoading] = useState(false);
+  const { displayModal, setIsLoading, isLoading } = useContext(utilsContext);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
 
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
+
   const _handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitClicked(true);
+
+    if (firstName.length < 1 && lastName.length < 1 && message.length < 1 && !validateEmail(email)) {
+      displayModal('Form contains Errors', SEVERITY.ERROR);
+      return 0;
+    }
 
     setIsLoading(true);
 
@@ -42,7 +49,6 @@ const Contact = () => {
 
   return (
     <>
-      {isLoading && <LinearProgress color='primary' />}
       <Navbar routes={isAuthenticated ? authenticatedRoutes : unauthenticatedRoutes} />
       <ActionFormContainer heading={heading} subheading={subheading} image={image}>
         <form className='action-form-form'>
@@ -53,8 +59,8 @@ const Contact = () => {
               className='action-form-input'
               value={firstName}
               onChange={e => setFirstName(e.target.value)}
-              error={firstName.length < 1}
-              helperText={firstName.length < 1 ? 'First name is required*' : ''}
+              error={firstName.length < 1 && isSubmitClicked}
+              helperText={firstName.length < 1 && isSubmitClicked ? 'First name is required*' : ''}
             />
 
             <TextField
@@ -71,8 +77,8 @@ const Contact = () => {
               className='action-form-input action-form-input-x2'
               value={email}
               onChange={e => setEmail(e.target.value)}
-              error={!validateEmail(email)}
-              helperText={validateEmail(email) ? '' : 'Please enter a valid email'}
+              error={!validateEmail(email) && isSubmitClicked}
+              helperText={!validateEmail(email) && isSubmitClicked ? 'Please enter a valid email' : ''}
             />
 
             <TextField
@@ -85,8 +91,8 @@ const Contact = () => {
               variant='filled'
               value={message}
               onChange={e => setMessage(e.target.value)}
-              error={message.length < 1}
-              helperText={message.length < 1 ? 'Message is required*' : ''}
+              error={message.length < 1 && isSubmitClicked}
+              helperText={message.length < 1 && isSubmitClicked ? 'Message is required*' : ''}
             />
           </div>
 
@@ -97,7 +103,7 @@ const Contact = () => {
             type='submit'
             color='primary'
             onClick={_handleSubmit}
-            disabled={firstName.length < 1 || message.length < 1 || !validateEmail(email)}
+            disabled={isLoading}
           >Send</Button>
         </form>
       </ActionFormContainer>
