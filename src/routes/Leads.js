@@ -18,7 +18,7 @@ import { ExportToCsv } from 'export-to-csv';
 
 
 const Leads = () => {
-  const {displayModal} = useContext(utilsContext);
+  const {displayModal, setIsLoading} = useContext(utilsContext);
 
   const [fetchLeads, { loading, data, error }] = useLazyQuery(LEADS);
   const [downloadLeads, downloadLeadState] = useLazyQuery(LEADS);
@@ -31,6 +31,7 @@ const Leads = () => {
 
   useEffect(() => {
     if (!loading) {
+      setIsLoading(true);
       fetchLeads({ variables: { limit: 10, page: 1 } });
       setRowsPerPage(10);
     }
@@ -43,19 +44,23 @@ const Leads = () => {
       setRows(data?.leads?.docs);
       setPage(Number(data?.leads?.page));
       setCount(Number(data?.leads?.totalDocs));
+      setIsLoading(false);
     }
   }, [data])
 
   const handleChangePage = (event, newPage) => {
+    setIsLoading(true);
     fetchLeads({ variables: { limit: rowsPerPage, page: newPage + 1} });
   }
 
   const handleChangeRowsPerPage = (event) => {
+    setIsLoading(true);
     setRowsPerPage(event.target.value);
     fetchLeads({ variables: { limit: event.target.value, page } });
   }
 
   const handleDownloadClick = () => {
+    setIsLoading(true);
     downloadLeads({variables: {page: 1, limit: count}});
   }
 
@@ -72,6 +77,7 @@ const Leads = () => {
         time: new Date(Date(createdAt)).toLocaleString()
       }));
       downloadLeadsToCsv(allLeads);
+      setIsLoading(false);
     }
   }, [downloadLeadState])
 
@@ -96,7 +102,6 @@ const Leads = () => {
   return (
     <>
       <Navbar routes={authenticatedRoutes} />
-      {(loading || downloadLeadState.loading) && <LinearProgress color='primary' />}
       <div className='leads-table-container'>
         <h3 className="leads-heading">All leads</h3>
         <TableContainer >

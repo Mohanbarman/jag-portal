@@ -12,19 +12,23 @@ import {SEVERITY} from "../context/UtilsContext";
 
 const Login = () => {
   const {setIsAuthenticated, setProfile, login} = useContext(authContext);
-  const {displayModal} = useContext(utilsContext);
+  const {displayModal, setIsLoading, isLoading} = useContext(utilsContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
 
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
 
   const _handleSubmit = async (e) => {
     e?.preventDefault();
+    setIsSubmitClicked(true);
 
     if (!(validateEmail(email) && password)) {
       displayModal('Please fix your email or password', SEVERITY.ERROR);
       return 0;
     }
+
+    setIsLoading(true);
 
     try {
       const res = await login({variables: {email: email, password: password}});
@@ -36,6 +40,8 @@ const Login = () => {
     } catch (e) {
       displayModal('Wrong email or password', SEVERITY.ERROR);
     }
+
+    setIsLoading(false);
 
   }
 
@@ -52,8 +58,8 @@ const Login = () => {
           color='primary'
           label='Email'
           className='action-form-input'
-          error={!validateEmail(email)}
-          helperText={validateEmail(email) ? '' : 'Please enter a valid email'}
+          error={!validateEmail(email) && isSubmitClicked}
+          helperText={!validateEmail(email) && isSubmitClicked ? 'Please enter a valid email' : ''}
         />
         <TextField
           value={password}
@@ -62,8 +68,8 @@ const Login = () => {
           label='Password'
           className='action-form-input'
           type='password'
-          error={password.length < 1}
-          helperText={password.length < 1 ? 'Please provide a password' : ''}
+          error={password.length < 1 && isSubmitClicked}
+          helperText={password.length < 1 && isSubmitClicked ? 'Please provide a password' : ''}
         />
 
         <div className='submit-btn-container'>
@@ -75,6 +81,7 @@ const Login = () => {
             type='submit'
             color='primary'
             onClick={_handleSubmit}
+            disabled={isLoading}
           >Login</Button>
         </div>
       </form>

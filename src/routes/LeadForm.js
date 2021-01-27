@@ -22,11 +22,23 @@ const LeadFormInputs = ({refId}) => {
   const [state, setState] = useState('');
 
   const [submitLead] = useMutation(SUBMIT_LEAD);
-  const {displayModal} = useContext(utilsContext);
-  const [loading, setLoading] = useState(true);
+  const {displayModal, isLoading, setIsLoading} = useContext(utilsContext);
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
 
   const _handleSubmit = async () => {
-    setLoading(true);
+    setIsSubmitClicked(true);
+
+    if ( firstName.length < 1
+      || !validatePhone(phoneNumber)
+      || city.length < 1
+      || state.length < 1
+      || !validateEmail(email)
+    ) {
+      displayModal('Form contains errors', SEVERITY.ERROR);
+      return 0;
+    }
+
+    setIsLoading(true);
     const lead = {
       firstName,
       lastName,
@@ -52,7 +64,7 @@ const LeadFormInputs = ({refId}) => {
       displayModal('Something went wrong', SEVERITY.ERROR);
     }
 
-    setLoading(false);
+    setIsLoading(false);
   }
 
   return(
@@ -67,8 +79,8 @@ const LeadFormInputs = ({refId}) => {
           value={firstName}
           onChange={i => setFirstName(i.target.value)}
           variant='filled'
-          error={firstName.length < 1}
-          helperText={firstName.length < 1 ? 'First name is required*' : ''}
+          error={firstName.length < 1 && isSubmitClicked}
+          helperText={firstName.length < 1 && isSubmitClicked ? 'First name is required*' : ''}
         />
         <TextField
           label='Last name'
@@ -81,32 +93,32 @@ const LeadFormInputs = ({refId}) => {
           value={email}
           onChange={i => setEmail(i.target.value)}
           variant='filled'
-          error={!validateEmail(email)}
-          helperText={!validateEmail(email) ? 'Please enter a valid email' : ''}
+          error={!validateEmail(email) && isSubmitClicked}
+          helperText={!validateEmail(email) && isSubmitClicked ? 'Please enter a valid email' : ''}
         />
         <TextField
           label='Phone number'
           value={phoneNumber}
           onChange={i => setPhoneNumber(i.target.value)}
           variant='filled'
-          error={!validatePhone(phoneNumber)}
-          helperText={!validatePhone(phoneNumber) ? 'Please enter a valid number' : ''}
+          error={!validatePhone(phoneNumber) && isSubmitClicked}
+          helperText={!validatePhone(phoneNumber) && isSubmitClicked ? 'Please enter a valid number' : ''}
         />
         <TextField
           label='City'
           value={city}
           onChange={i => setCity(i.target.value)}
           variant='filled'
-          error={city.length < 1}
-          helperText={city.length < 1 ? 'City is required*' : ''}
+          error={city.length < 1 && isSubmitClicked}
+          helperText={city.length < 1 && isSubmitClicked ? 'City is required*' : ''}
         />
         <TextField
           label='State'
           value={state}
           onChange={i => setState(i.target.value)}
           variant='filled'
-          error={state.length < 1}
-          helperText={state.length < 1 ? 'State is required*' : ''}
+          error={state.length < 1 && isSubmitClicked}
+          helperText={state.length < 1 && isSubmitClicked ? 'State is required*' : ''}
         />
       </div>
       <Button
@@ -115,15 +127,8 @@ const LeadFormInputs = ({refId}) => {
         variant='contained'
         color='primary'
         size='large'
-        endIcon={ <ArrowForwardIcon/> }
-        disabled={
-          firstName.length < 1
-          || !validatePhone(phoneNumber)
-          || city.length < 1
-          || state.length < 1
-          || !validateEmail(email)
-          || !loading
-        }>
+        disabled={isLoading}
+        endIcon={ <ArrowForwardIcon/> }>
         Submit
       </Button>
     </div>

@@ -12,8 +12,7 @@ import { useHistory } from "react-router-dom";
 
 const Registration = () => {
   const [registerUser] = useMutation(REGISTER_USER);
-  const { displayModal } = useContext(utilsContext);
-  const [isLoading, setIsLoading] = useState(false);
+  const { displayModal, isLoading, setIsLoading } = useContext(utilsContext);
 
   // Input fields
   const [firstName, setFirstName] = useState('');
@@ -23,11 +22,26 @@ const Registration = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [managerId, setManagerId] = useState('');
 
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
+
   const { heading, subheading, image } = registrationScreenContent;
   const history = useHistory();
 
   const _handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitClicked(true);
+
+    if (firstName.length < 1
+      && !validateEmail(email)
+      && (password !== confirmPassword || password.length < 1)
+      && !Number(managerId)
+      && managerId.length < 1
+    ) {
+      displayModal('Form contains error please correct them', SEVERITY.ERROR);
+      return 0;
+    }
+
+    setIsLoading(true);
 
     try {
       const user = {
@@ -37,19 +51,21 @@ const Registration = () => {
         password: password,
         empId: managerId,
       }
-      setIsLoading(true);
       await registerUser({ variables: user })
 
       history.push('/login');
       displayModal('Successfully registered');
+      setIsLoading(false);
 
     } catch (e) {
       if (e?.message === "User exists with this email") {
         displayModal('That email is already registered', SEVERITY.ERROR);
+        setIsLoading(false);
         return 0;
       }
       if (e?.message === 'E11000 duplicate key error collection: jag.users index: empId_1 dup key: { empId: "80809890" }') {
         displayModal('That manager id is already registered', SEVERITY.ERROR);
+        setIsLoading(false);
         return 0;
       }
       displayModal('Something went wrong', SEVERITY.ERROR);
@@ -59,18 +75,17 @@ const Registration = () => {
 
   return (
     <>
-      {isLoading && <LinearProgress color='primary' />}
       <ActionFormContainer heading={heading} subheading={subheading} image={image}>
         <form className='action-form-form'>
           <div className='form-grid'>
             <TextField
               color='primary'
-              label='First name'
+              label='First name*'
               className='action-form-input'
               value={firstName}
               onChange={e => setFirstName(e.target.value)}
-              error={firstName.length < 1}
-              helperText={firstName.length < 1 ? 'First name is required*' : ''}
+              error={firstName.length < 1 && isSubmitClicked}
+              helperText={firstName.length < 1 && isSubmitClicked ? 'First name is required*' : ''}
             />
 
             <TextField
@@ -83,44 +98,44 @@ const Registration = () => {
 
             <TextField
               color='primary'
-              label='Manager id'
+              label='Manager id*'
               className='action-form-input'
               value={managerId}
               onChange={e => setManagerId(e.target.value)}
-              error={managerId.length < 1}
-              helperText={managerId.length < 1 ? 'Manager id is required*' : ''}
+              error={managerId.length < 1 && isSubmitClicked}
+              helperText={managerId.length < 1 && isSubmitClicked ? 'Manager id is required*' : ''}
             />
 
             <TextField
               color='primary'
-              label='Email'
+              label='Email*'
               className='action-form-input'
               value={email}
               onChange={e => setEmail(e.target.value)}
-              error={!validateEmail(email)}
-              helperText={validateEmail(email) ? '' : 'Please enter a valid email'}
+              error={!validateEmail(email) && isSubmitClicked}
+              helperText={!validateEmail(email) && isSubmitClicked ? 'Please enter a valid email' : ''}
             />
 
             <TextField
               color='primary'
-              label='Password'
+              label='Password*'
               className='action-form-input'
               type='password'
               value={password}
               onChange={e => setPassword(e.target.value)}
-              error={password.length < 1}
-              helperText={password.length < 1 ? 'Password is required*' : ''}
+              error={password.length < 1 && isSubmitClicked}
+              helperText={password.length < 1 && isSubmitClicked ? 'Password is required*' : ''}
             />
 
             <TextField
               color='primary'
               type='password'
-              label='Confirm password'
+              label='Confirm password*'
               className='action-form-input'
               value={confirmPassword}
               onChange={e => setConfirmPassword(e.target.value)}
-              error={password !== confirmPassword}
-              helperText={password !== confirmPassword ? 'Password didn\'t matched' : ''}
+              error={password !== confirmPassword && isSubmitClicked}
+              helperText={password !== confirmPassword && isSubmitClicked ? 'Password didn\'t matched' : ''}
             />
           </div>
           <Button
@@ -130,7 +145,6 @@ const Registration = () => {
             type='submit'
             color='primary'
             onClick={_handleSubmit}
-            disabled={firstName.length < 1 || email.length < 1 || managerId.length < 1 || password.length < 1 || password !== confirmPassword}
           >Register</Button>
         </form>
       </ActionFormContainer>
