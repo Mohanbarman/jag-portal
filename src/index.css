@@ -885,3 +885,11 @@ Leads
     color: var(--clr-primary-11);
     margin-bottom: 2rem;
 }
+
+div.progress-bar-top {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
