@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import Home from "./routes/Home";
 import Contact from "./routes/Contact";
@@ -12,11 +12,15 @@ import Modal from "./Modal";
 import CreateNewMeetingMoblie from "./routes/CreateMeetingMobile";
 import Dashboard from "./routes/Dashboard";
 import Leads from "./routes/Leads";
+import {utilsContext} from "./context/UtilsContext";
+import {LinearProgress} from "@material-ui/core";
 
 
 const Routers = () => {
+  const {isLoading} = useContext(utilsContext);
   return (
     <Router>
+      {isLoading && <LinearProgress color='primary' className='progress-bar-top'/>}
       <Modal/>
       <Route exact path="/">
         <Home/>
