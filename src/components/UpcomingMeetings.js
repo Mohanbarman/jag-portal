@@ -1,4 +1,4 @@
-import React, {useContext, useRef} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {
   Button,
   CircularProgress,
@@ -11,15 +11,24 @@ import {
 } from "@material-ui/core";
 import {ArrowDownwardRounded} from "@material-ui/icons";
 import {utilsContext} from "../context/UtilsContext";
+import {useQuery} from "@apollo/client";
+import {MEETINGS} from "../graphql/meetingSchemas";
 
 
 const UpcomingMeetings = () => {
   const upcomingMeetingsRef = useRef(null);
-  const {upcomingMeetings} = useContext(utilsContext);
+  const {upcomingMeetings, setUpcomingMeetings} = useContext(utilsContext);
+  const {data, error, refetch} = useQuery(MEETINGS)
 
   const _handleScroll = () => {
     upcomingMeetingsRef.current?.scrollBy(0, 100);
   }
+
+  useEffect(() => {
+    if (data && !error) {
+      setUpcomingMeetings(data?.meetings?.docs);
+    }
+  }, [data, error])
 
   return (
     <section className='upcoming-meetings-section'>
