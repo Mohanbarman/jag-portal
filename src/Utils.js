@@ -8,5 +8,9 @@ const validateUrl = (url) => {
   return re.test(url);
 }
 
+const validatePhone = (number) => {
+  const re = /^\d{10}$/;
+  return re.test(number);
+}
 
-export { validateEmail, validateUrl }
+export { validateEmail, validateUrl, validatePhone }

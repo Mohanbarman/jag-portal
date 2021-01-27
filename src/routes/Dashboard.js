@@ -45,7 +45,7 @@ const Dashboard = () => {
         id='landing-page-input'
         variant='standard'
         className='landing-page-url-input'
-        value={`${window.location.href}lead-form?ref=${profile?._id}`}
+        value={`${window.location.host}/lead-form/${profile?._id}`}
         endAdornment={
           <InputAdornment position={'end'}>
             <IconButton onClick={_handleCopy}>
