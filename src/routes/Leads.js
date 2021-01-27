@@ -9,15 +9,19 @@ import Navbar from '../components/Navbar';
 import { authenticatedRoutes } from '../Routes';
 import { LEADS } from "../graphql/profileSchemas";
 import { useLazyQuery } from '@apollo/client';
-import { LinearProgress } from '@material-ui/core';
+import {Button, LinearProgress} from '@material-ui/core';
 import TablePagination from '@material-ui/core/TablePagination';
 import {SEVERITY, utilsContext} from "../context/UtilsContext";
+import {CloudDownload} from "@material-ui/icons";
+import { ExportToCsv } from 'export-to-csv';
+
 
 
 const Leads = () => {
   const {displayModal} = useContext(utilsContext);
 
   const [fetchLeads, { loading, data, error }] = useLazyQuery(LEADS);
+  const [downloadLeads, downloadLeadState] = useLazyQuery(LEADS);
   const [rows, setRows] = useState(undefined);
 
   // Pagination states
@@ -51,10 +55,48 @@ const Leads = () => {
     fetchLeads({ variables: { limit: event.target.value, page } });
   }
 
+  const handleDownloadClick = () => {
+    downloadLeads({variables: {page: 1, limit: count}});
+  }
+
+  // for handling download lead
+  useEffect(() => {
+    if (downloadLeadState.data && !downloadLeadState.loading) {
+      // remove __typename and _id field from each lead object
+      const allLeads = downloadLeadState.data?.leads?.docs?.map(({firstName, lastName, email, city, state, createdAt}) => ({
+        firstName,
+        lastName,
+        email,
+        city,
+        state,
+        time: new Date(Date(createdAt)).toLocaleString()
+      }));
+      downloadLeadsToCsv(allLeads);
+    }
+  }, [downloadLeadState])
+
+  const downloadLeadsToCsv = (leads) => {
+    const options = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalSeparator: '.',
+      showLabels: true,
+      showTitle: true,
+      title: `Downloaded at ${new Date().toLocaleString()}`,
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+      filename: 'all-leads'
+    };
+
+    const csvExporter = new ExportToCsv(options);
+    csvExporter.generateCsv(leads);
+  }
+
   return (
     <>
       <Navbar routes={authenticatedRoutes} />
-      {loading && <LinearProgress color='primary' />}
+      {(loading || downloadLeadState.loading) && <LinearProgress color='primary' />}
       <div className='leads-table-container'>
         <h3 className="leads-heading">All leads</h3>
         <TableContainer >
@@ -69,8 +111,8 @@ const Leads = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows?.map((row, index) => (
-                <TableRow key={index}>
+              {rows?.map((row) => (
+                <TableRow key={row._id}>
                   <TableCell align="left">{row.firstName}</TableCell>
                   <TableCell align="right">{row.email}</TableCell>
                   <TableCell align="right">{row.city}</TableCell>
@@ -89,6 +131,15 @@ const Leads = () => {
             onChangePage={handleChangePage}
             onChangeRowsPerPage={handleChangeRowsPerPage}
           />
+          <Button
+            variant={'contained'}
+            color={'primary'}
+            endIcon={<CloudDownload/>}
+            style={{float: 'right'}}
+            onClick={handleDownloadClick}
+          >
+            Download
+          </Button>
         </TableContainer>
       </div>
     </>
