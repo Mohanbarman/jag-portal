@@ -15,6 +15,7 @@ const ForgetPassword = () => {
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [isMailSent, setIsMailSent] = useState(false);
@@ -24,6 +25,17 @@ const ForgetPassword = () => {
 
   const _handleSubmit = async (e) => {
     e?.preventDefault();
+    setIsSubmitClicked(true);
+
+    if (!validateEmail(email)) {
+      displayModal('Form contain\'s errors', SEVERITY.ERROR);
+      return 0;
+    }
+
+    if (isMailSent && otp.length < 3 && newPassword.length < 8) {
+      displayModal('Form contain\'s errors', SEVERITY.ERROR);
+      return 0;
+    }
 
     setIsLoading(true);
 
@@ -58,8 +70,8 @@ const ForgetPassword = () => {
               className='action-form-input action-form-input-x2'
               value={email}
               onChange={e => setEmail(e.target.value)}
-              error={!validateEmail(email)}
-              helperText={validateEmail(email) ? '' : 'Please enter a valid email'}
+              error={!validateEmail(email) && isSubmitClicked}
+              helperText={!validateEmail(email) && isSubmitClicked ? 'Please enter a valid email' : ''}
             />
 
             <TextField
@@ -71,6 +83,8 @@ const ForgetPassword = () => {
                 Number(e.target.value) || e.target.value.length < 1 ? e.target.value : p)
               }
               disabled={!isMailSent}
+              error={isMailSent && otp.length < 3 && isSubmitClicked}
+              helperText={isMailSent && otp.length < 3 && isSubmitClicked ? 'Otp is required' : ''}
             />
 
             <TextField
@@ -81,6 +95,8 @@ const ForgetPassword = () => {
               value={newPassword}
               onChange={e => setNewPassword(e.target.value)}
               disabled={!isMailSent}
+              error={isMailSent && newPassword.length < 8 && isSubmitClicked}
+              helperText={isMailSent && newPassword.length < 8 && isSubmitClicked ? 'Password must be 8 characters long' : ''}
             />
           </div>
 
@@ -91,7 +107,6 @@ const ForgetPassword = () => {
             type='submit'
             color='primary'
             onClick={_handleSubmit}
-            disabled={!validateEmail(email)}
           >Submit</Button>
         </form>
       </ActionFormContainer>
