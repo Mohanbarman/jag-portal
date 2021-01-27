@@ -22,6 +22,7 @@ const UtilsProvider = (props) => {
   const [modalState, setModalState] = useState(_defaultModalState)
   const [upcomingMeetings, setUpcomingMeetings] = useState(undefined);
   const upcomingMeetingsQuery = useQuery(MEETINGS);
+  const [isLoading, setIsLoading] = useState(false);
 
   const hideModal = () => {
     setModalState(_defaultModalState)
@@ -50,6 +51,8 @@ const UtilsProvider = (props) => {
         upcomingMeetings,
         setUpcomingMeetings,
         displayModal,
+        isLoading,
+        setIsLoading,
       }} {...props}/>
   )
 }
