@@ -5,6 +5,13 @@ schema {
     mutation: Mutation
 }
 
+type Contact {
+    email: String!
+    firstName: String!
+    lastName: String
+    message: String!
+}
+
 type File {
     encoding: String!
     filename: String!
@@ -15,11 +22,13 @@ type File {
 type Lead {
     _id: ID!
     city: String
+    createdAt: String
     email: String
     firstName: String
     lastName: String
     phone: String
     state: String
+    updatedAt: String
     user: User
 }
 
@@ -64,8 +73,9 @@ type Mutation {
     logout: Boolean
     registerKid(input: UserInput!): User
     registerUser(input: UserInput!): User
-    resetPass(email: String, otp: Int!, password: String!): Boolean
+    resetPass(email: String!, otp: Int, password: String): Boolean
     sendOTPResetPass(email: String!): Boolean
+    submitContact(email: String!, firstName: String!, lastName: String, message: String!): Contact
     submitLead(input: LeadInput): Lead
     submitQuery(input: SubmitQuery): Boolean
     updateMeeting(id: String, input: MeetingInput): Meeting
