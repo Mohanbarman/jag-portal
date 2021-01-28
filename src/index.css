@@ -918,6 +918,7 @@ div.progress-bar-top {
 .not-found-container h1 {
     font-size: 10rem;
     color: var(--clr-primary);
+    text-shadow: 10px 8px 76px #F0C06C1C;
 }
 
 .not-found-container p {
