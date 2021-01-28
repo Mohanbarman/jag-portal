@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar';
 import { authenticatedRoutes } from '../Routes';
 import { LEADS } from "../graphql/profileSchemas";
 import { useLazyQuery } from '@apollo/client';
-import {Button, LinearProgress} from '@material-ui/core';
+import {Button} from '@material-ui/core';
 import TablePagination from '@material-ui/core/TablePagination';
 import {SEVERITY, utilsContext} from "../context/UtilsContext";
 import {CloudDownload} from "@material-ui/icons";
@@ -103,7 +103,18 @@ const Leads = () => {
     <>
       <Navbar routes={authenticatedRoutes} />
       <div className='leads-table-container'>
-        <h3 className="leads-heading">All leads</h3>
+        <div className='table-toolbar-container'>
+          <h3 className="leads-heading">All leads</h3>
+          <Button
+            variant={'contained'}
+            color={'primary'}
+            endIcon={<CloudDownload/>}
+            style={{float: 'right'}}
+            onClick={handleDownloadClick}
+          >
+            Download
+          </Button>
+        </div>
         <TableContainer >
           <Table aria-label="simple table">
             <TableHead>
@@ -136,15 +147,6 @@ const Leads = () => {
             onChangePage={handleChangePage}
             onChangeRowsPerPage={handleChangeRowsPerPage}
           />
-          <Button
-            variant={'contained'}
-            color={'primary'}
-            endIcon={<CloudDownload/>}
-            style={{float: 'right'}}
-            onClick={handleDownloadClick}
-          >
-            Download
-          </Button>
         </TableContainer>
       </div>
     </>

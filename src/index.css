@@ -383,6 +383,7 @@ Carousel
     border-radius: 50%;
     display: flex;
     align-items: center;
+    box-shadow: 0px 12px 10px 1px #0009;
 }
 
 .core-leader-image {
@@ -846,19 +847,20 @@ Carousel
 
 .swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after,
 .swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after {
-    content: '\203A';
+    content: 'next';
     height: 20px;
     width: 20px;
     position: absolute;
-    top: -6px;
-    left: 13px;
+    top: 11px;
+    left: 15px;
     color: var(--clr-primary);
+    font-size: 20px;
 }
 
 .swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after {
-    content: '\2039';
-    left: 10px;
-    top: -8px;
+    content: 'prev';
+    left: 13px;
+    top: 10px;
 }
 
 .swiper-button-next, .swiper-container-rtl .swiper-button-prev,
@@ -881,9 +883,8 @@ Leads
 }
 
 .leads-heading {
-    text-align: center;
     color: var(--clr-primary-11);
-    margin-bottom: 2rem;
+    margin: 0;
 }
 
 div.progress-bar-top {
@@ -892,4 +893,11 @@ div.progress-bar-top {
     left: 0;
     width: 100%;
     z-index: 10;
+}
+
+.table-toolbar-container {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

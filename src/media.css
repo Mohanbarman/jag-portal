@@ -84,7 +84,8 @@ Action form media queries
         width: 100%;
     }
 
-    .mission-content-container {
+    .mission-content-container,
+    .section .prospecting-videos-container {
         margin-top: 40px;
     }
 

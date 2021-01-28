@@ -11,9 +11,8 @@ import {
   CarouselContext
 } from 'pure-react-carousel';
 import {IconButton} from "@material-ui/core";
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import {carouselContent} from "../Content";
+import {KeyboardArrowLeft, KeyboardArrowRight, NavigateBefore, NavigateNext} from "@material-ui/icons";
 
 
 
@@ -47,12 +46,12 @@ const CarouselNavButtons = () => {
     <>
       <ButtonBack className="carousel-nav-btn carousel-prev-btn">
         <IconButton color="primary">
-          <ArrowBackIosIcon/>
+          <KeyboardArrowLeft/>
         </IconButton>
       </ButtonBack>
       <ButtonNext className="carousel-nav-btn carousel-next-btn">
         <IconButton color="primary">
-          <ArrowForwardIosIcon/>
+          <KeyboardArrowRight/>
         </IconButton>
       </ButtonNext>
     </>
