@@ -3,6 +3,13 @@ import {gql} from '@apollo/client';
 const MEETINGS = gql`
   query MEETINGS($page:Int, $limit:Int, $orderBy:String) {
       meetings(page:$page, limit:$limit, orderBy:$orderBy) {
+          totalPages
+          totalDocs
+          page
+          hasNextPage
+          hasPrevPage
+          prevPage
+          nextPage
           docs {
               _id
               title

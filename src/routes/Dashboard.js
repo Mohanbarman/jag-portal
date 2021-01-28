@@ -67,8 +67,8 @@ const Dashboard = () => {
               {landingPageField}
             </div>
           )}
-          <UpcomingMeetings/>
           <TrainingVideos/>
+          <UpcomingMeetings/>
         </section>
         <section className='home-auth-right-section'>
           <img src={BackgroundLogo} alt='' className='background-logo-dasboard'/>
