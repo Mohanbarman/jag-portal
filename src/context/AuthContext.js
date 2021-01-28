@@ -14,8 +14,7 @@ const AuthProvider = (props) => {
 
   useEffect(() => {
     let p = localStorage.profile;
-    console.log(p);
-    if (p) {
+    if (p && p !== 'undefined') {
       setProfile(JSON.parse(p));
       setIsAuthenticated(true);
     } else {
@@ -24,10 +23,17 @@ const AuthProvider = (props) => {
   }, [])
 
   useEffect(() => {
-    // localStorage['profile'] = JSON.stringify(currentUser.data?.currentUser);
-    // setProfile(currentUser.data?.currentUser);
-    console.log(currentUser.data?.currentUser);
-  }, [])
+    if (!currentUser?.error) {
+      localStorage['profile'] = JSON.stringify(currentUser.data?.currentUser);
+      setProfile(currentUser?.data?.currentUser);
+    }
+    if (currentUser?.error?.message === 'You are not authorized for this action') {
+      setIsAuthenticated(false);
+      setProfile(undefined);
+      localStorage.removeItem('profile');
+      logout();
+    }
+  }, [currentUser])
 
   return <authContext.Provider value={{
     isAuthenticated,

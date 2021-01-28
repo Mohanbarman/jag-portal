@@ -25,9 +25,9 @@ const UpcomingMeetings = () => {
   const [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(true);
 
-  const _handleScroll = () => {
-    upcomingMeetingsRef.current?.scrollBy(0, 100);
-  }
+  // const _handleScroll = () => {
+  //   upcomingMeetingsRef.current?.scrollBy(0, 100);
+  // }
 
   useEffect(() => {
     if (data && !error) {
@@ -59,13 +59,13 @@ const UpcomingMeetings = () => {
           <List
             className='upcoming-meetings-list'
             // onScroll={loadMoreMeetings}
-            ref={upcomingMeetingsRef}
-            style={{maxHeight: '50vh', overflow: 'auto'}}
           >
             <InfiniteScroll
               next={loadMoreMeetings}
               hasMore={hasNextPage}
               loader={<LinearProgress color={'primary'}/>}
+              height={'60vh'}
+              ref={upcomingMeetingsRef}
               dataLength={upcomingMeetings.length}>
               {upcomingMeetings?.map((meeting) => (
                 <ListItem>
@@ -84,12 +84,12 @@ const UpcomingMeetings = () => {
               ))}
             </InfiniteScroll>
           </List>
-          <div className='icon-btn-container'>
-            <IconButton onClick={_handleScroll} className='upcoming-meetings-scroll-btn' color='primary'
-                        variant='filled'>
-              <ArrowDownwardRounded/>
-            </IconButton>
-          </div>
+          {/*<div className='icon-btn-container'>*/}
+          {/*  <IconButton onClick={_handleScroll} className='upcoming-meetings-scroll-btn' color='primary'*/}
+          {/*              variant='filled'>*/}
+          {/*    <ArrowDownwardRounded/>*/}
+          {/*  </IconButton>*/}
+          {/*</div>*/}
         </>
       ) : <CircularProgress className='circular-progress' color='primary'/>}
     </section>
