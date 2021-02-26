@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Logo from '../assets/logo.svg';
 import { Link, useHistory } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -13,13 +13,13 @@ import {
   ListItem,
   ListItemText,
 } from "@material-ui/core";
-import {SEVERITY, utilsContext} from "../context/UtilsContext";
+import { SEVERITY, utilsContext } from "../context/UtilsContext";
 
 
-const Navbar = ({routes}) => {
+const Navbar = ({ routes }) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const {isAuthenticated, setIsAuthenticated, setProfile, logout} = useContext(authContext);
+  const { isAuthenticated, setIsAuthenticated, setProfile, logout } = useContext(authContext);
   const { displayModal } = useContext(utilsContext);
 
   const history = useHistory();
@@ -48,45 +48,45 @@ const Navbar = ({routes}) => {
 
   // Desktop nav bar
   const desktopNav = (
-      <ul>
-        {routes?.filter(i => i.path !== '/login').map(i => (
-            <li key={i.path}>
-              <Link to={i.path}>{i.label}</Link>
-            </li>
-        ))}
+    <ul>
+      {routes?.filter(i => i.path !== '/jag-portal/login').map(i => (
+        <li key={i.path}>
+          <Link to={i.path}>{i.label}</Link>
+        </li>
+      ))}
 
-        {!isAuthenticated &&
-          <li>
-            <Button onClick={() => {
-              history.push('/login')
-            }} className="btn-primary" variant="contained" color="primary">
-              Login
+      {!isAuthenticated &&
+        <li>
+          <Button onClick={() => {
+            history.push('/jag-portal/login')
+          }} className="btn-primary" variant="contained" color="primary">
+            Login
             </Button>
-          </li>
-        }
+        </li>
+      }
 
-        {
-          isAuthenticated && (
-            <Button
-              className='btn-primary'
-              variant='contained'
-              color='primary'
-              onClick={_handleLogout}
-            >
-              Logout
-            </Button>
-          )
-        }
-      </ul>
+      {
+        isAuthenticated && (
+          <Button
+            className='btn-primary'
+            variant='contained'
+            color='primary'
+            onClick={_handleLogout}
+          >
+            Logout
+          </Button>
+        )
+      }
+    </ul>
   )
 
   // Mobile nav bar
-  const mobileNav =  (
+  const mobileNav = (
     <>
       <IconButton onClick={() => {
         setIsDrawerOpen(p => !p);
       }} color="inherit" >
-        <MenuIcon/>
+        <MenuIcon />
       </IconButton>
 
       <Drawer
@@ -97,7 +97,7 @@ const Navbar = ({routes}) => {
       >
         <List>
           {routes?.map((i, index) => (
-            <ListItem button key={index} onClick={() =>  history.push(i.path)}>
+            <ListItem button key={index} onClick={() => history.push(i.path)}>
               <ListItemText className="text" primary={i.label} />
             </ListItem>
           ))}
@@ -105,24 +105,24 @@ const Navbar = ({routes}) => {
             <>
               {screenWidth < 900 && (
                 <ListItem button onClick={() => history.push('/create-meeting')}>
-                  <ListItemText className="text" primary="Create new meeting"/>
+                  <ListItemText className="text" primary="Create new meeting" />
                 </ListItem>
               )}
               <ListItem button onClick={_handleLogout}>
-                <ListItemText className="text" primary="Logout"/>
+                <ListItemText className="text" primary="Logout" />
               </ListItem>
             </>
-            )}
+          )}
         </List>
         <Divider />
       </Drawer>
     </>
   );
 
-  return(
+  return (
     <div className="nav-wrapper">
       <div className="logo-wrapper">
-        <img src={Logo} alt=""/>
+        <img src={Logo} alt="" />
       </div>
       {screenWidth > 1100 ? desktopNav : mobileNav}
     </div>
