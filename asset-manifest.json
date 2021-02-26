@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/jag-portal/static/css/main.e1e0f7a4.chunk.css",
-    "main.js": "/jag-portal/static/js/main.a120fc06.chunk.js",
-    "main.js.map": "/jag-portal/static/js/main.a120fc06.chunk.js.map",
+    "main.js": "/jag-portal/static/js/main.2209c136.chunk.js",
+    "main.js.map": "/jag-portal/static/js/main.2209c136.chunk.js.map",
     "runtime-main.js": "/jag-portal/static/js/runtime-main.cc7fae39.js",
     "runtime-main.js.map": "/jag-portal/static/js/runtime-main.cc7fae39.js.map",
     "static/css/2.a5acea70.chunk.css": "/jag-portal/static/css/2.a5acea70.chunk.css",
@@ -32,6 +32,6 @@
     "static/css/2.a5acea70.chunk.css",
     "static/js/2.62e9db46.chunk.js",
     "static/css/main.e1e0f7a4.chunk.css",
-    "static/js/main.a120fc06.chunk.js"
+    "static/js/main.2209c136.chunk.js"
   ]
 }
