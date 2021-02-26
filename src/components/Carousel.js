@@ -12,7 +12,7 @@ import {
 } from 'pure-react-carousel';
 import {IconButton} from "@material-ui/core";
 import {carouselContent} from "../Content";
-import {KeyboardArrowLeft, KeyboardArrowRight, NavigateBefore, NavigateNext} from "@material-ui/icons";
+import {KeyboardArrowLeft, KeyboardArrowRight} from "@material-ui/icons";
 
 
 
