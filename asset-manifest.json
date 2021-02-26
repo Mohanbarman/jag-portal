@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/jag-portal/static/css/main.e1e0f7a4.chunk.css",
+    "main.js": "/jag-portal/static/js/main.a120fc06.chunk.js",
+    "main.js.map": "/jag-portal/static/js/main.a120fc06.chunk.js.map",
+    "runtime-main.js": "/jag-portal/static/js/runtime-main.cc7fae39.js",
+    "runtime-main.js.map": "/jag-portal/static/js/runtime-main.cc7fae39.js.map",
+    "static/css/2.a5acea70.chunk.css": "/jag-portal/static/css/2.a5acea70.chunk.css",
+    "static/js/2.62e9db46.chunk.js": "/jag-portal/static/js/2.62e9db46.chunk.js",
+    "static/js/2.62e9db46.chunk.js.map": "/jag-portal/static/js/2.62e9db46.chunk.js.map",
+    "index.html": "/jag-portal/index.html",
+    "static/css/2.a5acea70.chunk.css.map": "/jag-portal/static/css/2.a5acea70.chunk.css.map",
+    "static/css/main.e1e0f7a4.chunk.css.map": "/jag-portal/static/css/main.e1e0f7a4.chunk.css.map",
+    "static/js/2.62e9db46.chunk.js.LICENSE.txt": "/jag-portal/static/js/2.62e9db46.chunk.js.LICENSE.txt",
+    "static/media/1.68f0071b.jpg": "/jag-portal/static/media/1.68f0071b.jpg",
+    "static/media/2.c8d5dcc1.jpg": "/jag-portal/static/media/2.c8d5dcc1.jpg",
+    "static/media/3.418a957f.jpg": "/jag-portal/static/media/3.418a957f.jpg",
+    "static/media/4.c2f4f95f.jpg": "/jag-portal/static/media/4.c2f4f95f.jpg",
+    "static/media/5.14477ac4.jpg": "/jag-portal/static/media/5.14477ac4.jpg",
+    "static/media/6.5b95a099.jpg": "/jag-portal/static/media/6.5b95a099.jpg",
+    "static/media/first.7a37adea.jpg": "/jag-portal/static/media/first.7a37adea.jpg",
+    "static/media/instagram-gold.b6dc9ad4.png": "/jag-portal/static/media/instagram-gold.b6dc9ad4.png",
+    "static/media/linkedin-gold.d27256d9.png": "/jag-portal/static/media/linkedin-gold.d27256d9.png",
+    "static/media/logo.7b802b03.svg": "/jag-portal/static/media/logo.7b802b03.svg",
+    "static/media/mission-and-vision.9749db5c.jpg": "/jag-portal/static/media/mission-and-vision.9749db5c.jpg",
+    "static/media/placeholder-profile.ca17409d.png": "/jag-portal/static/media/placeholder-profile.ca17409d.png",
+    "static/media/watermark-logo.342d40b7.png": "/jag-portal/static/media/watermark-logo.342d40b7.png",
+    "static/media/youtube-gold.01bffff7.png": "/jag-portal/static/media/youtube-gold.01bffff7.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cc7fae39.js",
+    "static/css/2.a5acea70.chunk.css",
+    "static/js/2.62e9db46.chunk.js",
+    "static/css/main.e1e0f7a4.chunk.css",
+    "static/js/main.a120fc06.chunk.js"
+  ]
+}
