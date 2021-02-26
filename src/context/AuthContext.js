@@ -1,6 +1,6 @@
-import React, {createContext, useEffect, useState} from 'react';
-import {useMutation, useQuery} from '@apollo/client';
-import {LOGIN, LOGOUT, CURRENT_USER} from "../graphql/profileSchemas";
+import React, { createContext, useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { LOGIN, LOGOUT, CURRENT_USER } from "../graphql/profileSchemas";
 
 const authContext = createContext();
 
@@ -33,7 +33,7 @@ const AuthProvider = (props) => {
       localStorage.removeItem('profile');
       logout();
     }
-  }, [currentUser])
+  }, [currentUser, logout])
 
   return <authContext.Provider value={{
     isAuthenticated,
@@ -45,4 +45,4 @@ const AuthProvider = (props) => {
   }} {...props} />
 }
 
-export {AuthProvider, authContext};
+export { AuthProvider, authContext };

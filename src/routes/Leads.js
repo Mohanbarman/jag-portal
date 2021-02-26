@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,16 +9,16 @@ import Navbar from '../components/Navbar';
 import { authenticatedRoutes } from '../Routes';
 import { LEADS } from "../graphql/profileSchemas";
 import { useLazyQuery } from '@apollo/client';
-import {Button} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import TablePagination from '@material-ui/core/TablePagination';
-import {SEVERITY, utilsContext} from "../context/UtilsContext";
-import {CloudDownload} from "@material-ui/icons";
+import { SEVERITY, utilsContext } from "../context/UtilsContext";
+import { CloudDownload } from "@material-ui/icons";
 import { ExportToCsv } from 'export-to-csv';
 
 
 
 const Leads = () => {
-  const {displayModal, setIsLoading} = useContext(utilsContext);
+  const { displayModal, setIsLoading } = useContext(utilsContext);
 
   const [fetchLeads, { loading, data, error }] = useLazyQuery(LEADS);
   const [downloadLeads, downloadLeadState] = useLazyQuery(LEADS);
@@ -50,7 +50,7 @@ const Leads = () => {
 
   const handleChangePage = (event, newPage) => {
     setIsLoading(true);
-    fetchLeads({ variables: { limit: rowsPerPage, page: newPage + 1} });
+    fetchLeads({ variables: { limit: rowsPerPage, page: newPage + 1 } });
   }
 
   const handleChangeRowsPerPage = (event) => {
@@ -61,14 +61,14 @@ const Leads = () => {
 
   const handleDownloadClick = () => {
     setIsLoading(true);
-    downloadLeads({variables: {page: 1, limit: count}});
+    downloadLeads({ variables: { page: 1, limit: count } });
   }
 
   // for handling download lead
   useEffect(() => {
     if (downloadLeadState.data && !downloadLeadState.loading) {
       // remove __typename and _id field from each lead object
-      const allLeads = downloadLeadState.data?.leads?.docs?.map(({firstName, lastName, email, city, state, createdAt}) => ({
+      const allLeads = downloadLeadState.data?.leads?.docs?.map(({ firstName, lastName, email, city, state, createdAt }) => ({
         firstName,
         lastName,
         email,
@@ -108,8 +108,8 @@ const Leads = () => {
           <Button
             variant={'contained'}
             color={'primary'}
-            endIcon={<CloudDownload/>}
-            style={{float: 'right'}}
+            endIcon={<CloudDownload />}
+            style={{ float: 'right' }}
             onClick={handleDownloadClick}
           >
             Download
