@@ -49,7 +49,7 @@ const Navbar = ({ routes }) => {
   // Desktop nav bar
   const desktopNav = (
     <ul>
-      {routes?.filter(i => i.path !== '/jag-portal/login').map(i => (
+      {routes?.filter(i => i.path !== '/login').map(i => (
         <li key={i.path}>
           <Link to={i.path}>{i.label}</Link>
         </li>
@@ -58,7 +58,7 @@ const Navbar = ({ routes }) => {
       {!isAuthenticated &&
         <li>
           <Button onClick={() => {
-            history.push('/jag-portal/login')
+            history.push('/login')
           }} className="btn-primary" variant="contained" color="primary">
             Login
             </Button>
