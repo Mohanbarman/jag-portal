@@ -1,71 +1,71 @@
 export const unauthenticatedRoutes = [
   {
     label: 'Home',
-    path: '/jag-portal/',
+    path: '/',
   },
   {
     label: 'About',
-    path: '/jag-portal/about'
+    path: '/about'
   },
   {
     label: 'Registration',
-    path: '/jag-portal/registration',
+    path: '/registration',
   },
   {
     label: 'Contact',
-    path: '/jag-portal/contact',
+    path: '/contact',
   },
   {
     label: 'Login',
-    path: '/jag-portal/login',
+    path: '/login',
   }
 ]
 
 export const authenticatedRoutes = [
   {
     label: 'Dashboard',
-    path: '/jag-portal/dashboard',
+    path: '/dashboard',
   },
   {
     label: 'Home',
-    path: '/jag-portal/',
+    path: '/',
   },
   {
     label: 'Leads',
-    path: '/jag-portal/leads'
+    path: '/leads'
   },
   {
     label: 'Edit profile',
-    path: '/jag-portal/edit-profile'
+    path: '/edit-profile'
   },
   {
     label: 'About us',
-    path: '/jag-portal/about'
+    path: '/about'
   },
   {
     label: 'Contact',
-    path: '/jag-portal/contact',
+    path: '/contact',
   },
 ]
 
 export const adminAdditionalRoutes = [
   {
     label: 'Create meeting',
-    path: '/jag-portal/create-meeting',
+    path: '/create-meeting',
   }
 ]
 
 export const landingPageRoutes = [
   {
     label: 'Home',
-    path: '/jag-portal/',
+    path: '/',
   },
   {
     label: 'About us',
-    path: '/jag-portal/about'
+    path: '/about'
   },
   {
     label: 'Contact',
-    path: '/jag-portal/contact'
+    path: '/contact'
   },
 ]

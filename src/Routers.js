@@ -27,49 +27,49 @@ const Routers = () => {
       <Modal />
       <Router>
         <Switch>
-          <Route exact path="/jag-portal/">
+          <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/jag-portal/contact">
+          <Route exact path="/contact">
             <Contact />
           </Route>
-          <Route exact path="/jag-portal/about">
+          <Route exact path="/about">
             <About />
           </Route>
-          <Route exact path="/jag-portal/forget-password">
+          <Route exact path="/forget-password">
             <ForgetPassword />
           </Route>
           {!isAuthenticated && (
             [
-              <Route exact path="/jag-portal/login">
+              <Route exact path="/login">
                 <Login />
               </Route>
               ,
-              <Route exact path="/jag-portal/registration">
+              <Route exact path="/registration">
                 <Registration />
               </Route>
             ]
           )}
           {isAuthenticated && (
             [
-              <Route exact path="/jag-portal/edit-profile">
+              <Route exact path="/edit-profile">
                 <EditProfile />
               </Route>
               ,
-              <Route exact path="/jag-portal/dashboard">
+              <Route exact path="/dashboard">
                 <Dashboard />
               </Route>
               ,
-              <Route exact path="/jag-portal/leads">
+              <Route exact path="/leads">
                 <Leads />
               </Route>
               ,
-              <Route exact path="/jag-portal/create-meeting">
+              <Route exact path="/create-meeting">
                 <CreateNewMeetingMoblie />
               </Route>
             ]
           )}
-          <Route exact path="/jag-portal/lead-form/:ref" component={LeadForm} />
+          <Route exact path="/lead-form/:ref" component={LeadForm} />
           <Route><NotFound /></Route>
         </Switch>
       </Router>
